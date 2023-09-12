@@ -19,6 +19,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.hms.genericUtils.ExcelFileUtility;
+import com.hms.genericUtils.FileUtility;
+import com.hms.genericUtils.Java_Utils;
+import com.hms.genericUtils.WebDriver_Utils;
+
 public class AddDoctor_AdminModuleTest {
 	/*
 	 * Admin should be able to Add Doctor
@@ -28,14 +33,16 @@ public class AddDoctor_AdminModuleTest {
 
 	public static void main(String[] args) throws InterruptedException, Throwable {
 		WebDriver driver = null;
-		// property file data fetch
-		FileInputStream fis = new FileInputStream(".\\src\\test\\resources\\CommonData.properties");
-		Properties prop = new Properties();
-		prop.load(fis);
-		String brow = prop.getProperty("browsername");
-		String Url = prop.getProperty("url");
-		String un = prop.getProperty("adminun");
-		String psd = prop.getProperty("adminpsd");
+		// Object Creation for Utility Files
+		FileUtility fUtil = new FileUtility();
+		WebDriver_Utils wUtil = new WebDriver_Utils();
+		ExcelFileUtility EUtil = new ExcelFileUtility();
+		Java_Utils jUtil = new Java_Utils();
+
+		String brow = fUtil.propertyFileDataFetch("browsername");
+		String Url = fUtil.propertyFileDataFetch("url");
+		String un = fUtil.propertyFileDataFetch("adminun");
+		String psd = fUtil.propertyFileDataFetch("adminpsd");
 
 		// Browser Control
 		if (brow.equalsIgnoreCase("chrome")) {
@@ -50,14 +57,11 @@ public class AddDoctor_AdminModuleTest {
 			System.out.println("Invalid Browser name");
 		}
 
-		driver.manage().window().maximize();
-
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		wUtil.maximizeBrowser(driver);
 		driver.get(Url);
-
+		wUtil.implicitWait(driver, 20);
 		// RandomInt
-		Random r = new Random();
-		int ranInt = r.nextInt(10000);
+		int ranInt = jUtil.randomIntegerNumber(10000);
 
 		// Key Values
 		String ModuleName = "Admin Login";
@@ -118,7 +122,7 @@ public class AddDoctor_AdminModuleTest {
 				driver.findElement(
 						By.xpath("//label[@for='fess']/following::input[@placeholder='" + ss.getKey() + "']"))
 						.sendKeys(ss.getValue());
-			}else if (ss.getKey().equals("Enter Doctor Email id")) {
+			} else if (ss.getKey().equals("Enter Doctor Email id")) {
 				driver.findElement(
 						By.xpath("//label[@for='fess']/following::input[@placeholder='" + ss.getKey() + "']"))
 						.sendKeys(ss.getValue());

@@ -1,13 +1,16 @@
 package com.HMS.admin;
 
-import java.time.Duration;
-import java.util.Random;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.hms.genericUtils.ExcelFileUtility;
+import com.hms.genericUtils.FileUtility;
+import com.hms.genericUtils.Java_Utils;
+import com.hms.genericUtils.WebDriver_Utils;
 
 public class EditDoctorDetails_AdminModuleTest {
 	/*
@@ -16,28 +19,47 @@ public class EditDoctorDetails_AdminModuleTest {
 	 * @Author S Roop Kumar
 	 */
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Throwable {
+		WebDriver driver = null;
+		// Object Creation for Utility Files
+		FileUtility fUtil = new FileUtility();
+		WebDriver_Utils wUtil = new WebDriver_Utils();
+		ExcelFileUtility EUtil = new ExcelFileUtility();
+		Java_Utils jUtil = new Java_Utils();
+
+		String brow = fUtil.propertyFileDataFetch("browsername");
+		String Url = fUtil.propertyFileDataFetch("url");
+		String un = fUtil.propertyFileDataFetch("adminun");
+		String psd = fUtil.propertyFileDataFetch("adminpsd");
+
 		// Browser Control
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		driver.get("http://rmgtestingserver/domain/Hospital_Management_System/");
+		if (brow.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+			System.out.println("Chrome has launched");
+
+		} else if (brow.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+			System.out.println("Firefox has launched");
+
+		} else {
+			System.out.println("Invalid Browser name");
+		}
+		wUtil.maximizeBrowser(driver);
+		driver.get(Url);
+		wUtil.implicitWait(driver, 20);
 
 		// RandomInt
-		Random r = new Random();
-		int ranInt = r.nextInt(10000);
+		int ranInt = jUtil.randomIntegerNumber(10000);
 
 		// Key Values
 		String ModuleName = "Admin Login";
-		String un = "admin";
-		String psd = "Test@12345";
 		String doctorSpec = "Urology";
 		String DoctorName = "Karthi" + ranInt;
 		String DoctorClinicAddress = "Doctor Clinic Address:1/115 venkatampatti,Dharmapuri";
 		String DoctorConsultancyFees = "500";
 		String DoctorContactno = "6382121323";
 
-		// Test Script to create ADD DOCTOR SPECIALIZATION
+		// Test Script
 		driver.findElement(By.xpath("//h3[text()='" + ModuleName
 				+ "']/ancestor::div[@class='listview_1_of_3 images_1_of_3']/descendant::a")).click();
 		driver.findElement(By.xpath("//input[@name='username']")).sendKeys(un);

@@ -18,6 +18,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.hms.genericUtils.ExcelFileUtility;
+import com.hms.genericUtils.FileUtility;
+import com.hms.genericUtils.Java_Utils;
+import com.hms.genericUtils.WebDriver_Utils;
+
 public class AddDoctorSpecialinzation_AdminModuleTest {
 
 	public static void main(String[] args) throws InterruptedException, Throwable {
@@ -35,15 +40,19 @@ public class AddDoctorSpecialinzation_AdminModuleTest {
 		 * 
 		 * @Author: S Roop Kumar
 		 */
+
 		WebDriver driver = null;
-		// property file data fetch
-		FileInputStream fis = new FileInputStream(".\\src\\test\\resources\\CommonData.properties");
-		Properties prop = new Properties();
-		prop.load(fis);
-		String brow = prop.getProperty("browsername");
-		String Url = prop.getProperty("url");
-		String un = prop.getProperty("adminun");
-		String psd = prop.getProperty("adminpsd");
+		// Object Creation for Utility Files
+		FileUtility fUtil = new FileUtility();
+		WebDriver_Utils wUtil = new WebDriver_Utils();
+		ExcelFileUtility EUtil = new ExcelFileUtility();
+		Java_Utils jUtil = new Java_Utils();
+		
+		
+		String brow = fUtil.propertyFileDataFetch("browsername");
+		String Url = fUtil.propertyFileDataFetch("url");
+		String un = fUtil.propertyFileDataFetch("adminun");
+		String psd = fUtil.propertyFileDataFetch("adminpsd");
 
 		// Browser Control
 		if (brow.equalsIgnoreCase("chrome")) {
@@ -58,10 +67,9 @@ public class AddDoctorSpecialinzation_AdminModuleTest {
 			System.out.println("Invalid Browser name");
 		}
 
-		driver.manage().window().maximize();
-
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		wUtil.maximizeBrowser(driver);
 		driver.get(Url);
+		wUtil.implicitWait(driver, 20);
 		// Test Data from excel
 		FileInputStream fi = new FileInputStream(".//src//test//resources//Admin_Module.xlsx");
 		Workbook w = WorkbookFactory.create(fi);
@@ -69,8 +77,7 @@ public class AddDoctorSpecialinzation_AdminModuleTest {
 		int lr = sh.getLastRowNum();
 
 //		RandomInt
-		Random r = new Random();
-		int ranInt = r.nextInt(10000);
+		int ranInt = jUtil.randomIntegerNumber(10000);
 
 		// Key Values
 		String ModuleName = "Admin Login";
