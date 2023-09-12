@@ -1,9 +1,13 @@
 package com.hms.genericUtils;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
+
+import org.bouncycastle.jcajce.provider.asymmetric.ecgost.KeyAgreementSpi.ECVKO;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -334,6 +338,55 @@ public class WebDriver_Utils {
 	public void scrollToParticularElement(WebDriver driver, WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView()", element);
+	}
+
+	/**
+	 * This Method is used to drag and drop the element using element parameter
+	 * 
+	 * @param driver
+	 * @param srcElement
+	 * @param dstElement
+	 */
+	public void dragAndDropUsingElement(WebDriver driver, WebElement srcElement, WebElement dstElement) {
+		Actions act = new Actions(driver);
+		act.dragAndDrop(srcElement, srcElement).perform();
+
+	}
+
+	/**
+	 * This Method is used to drag and drop the element using element, and off set
+	 * parameter
+	 * 
+	 * @param driver
+	 * @param x
+	 * @param y
+	 * @param srcElement
+	 */
+	public void dragAndDropUsingOffset(WebDriver driver, int x, int y, WebElement srcElement) {
+		Actions act = new Actions(driver);
+		act.dragAndDropBy(srcElement, x, y).perform();
+
+	}
+
+	/**
+	 * This method is used to press the Enter Key
+	 * 
+	 * @throws Throwable
+	 */
+
+	public void pressEnterKey() throws Throwable {
+		Robot robo = new Robot();
+		robo.keyPress(KeyEvent.VK_ENTER);
+	}
+
+	/**
+	 * This method is used to press the Enter Key
+	 * 
+	 * @throws Throwable
+	 */
+	public void releaseEnterKey() throws Throwable {
+		Robot robo = new Robot();
+		robo.keyRelease(KeyEvent.VK_ENTER);
 	}
 
 }
