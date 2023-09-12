@@ -47,8 +47,7 @@ public class AddDoctorSpecialinzation_AdminModuleTest {
 		WebDriver_Utils wUtil = new WebDriver_Utils();
 		ExcelFileUtility EUtil = new ExcelFileUtility();
 		Java_Utils jUtil = new Java_Utils();
-		
-		
+
 		String brow = fUtil.propertyFileDataFetch("browsername");
 		String Url = fUtil.propertyFileDataFetch("url");
 		String un = fUtil.propertyFileDataFetch("adminun");
@@ -92,17 +91,19 @@ public class AddDoctorSpecialinzation_AdminModuleTest {
 		driver.findElement(By.xpath(
 				"//ul[@class='main-navigation-menu']/descendant::span[text()=' Doctors ']/following::span[text()=' Doctor Specialization ']"))
 				.click();
-		HashedMap<String, String> map = new HashedMap<>();
-		for (int i = 1; i <= lr; i++) {
-			String key = sh.getRow(i).getCell(0).getStringCellValue();
-			String value = sh.getRow(i).getCell(1).getStringCellValue();
-			map.put(key, value);
+//		HashedMap<String, String> map = new HashedMap<>();
+//		for (int i = 1; i <= lr; i++) {
+//			String key = sh.getRow(i).getCell(0).getStringCellValue();
+//			String value = sh.getRow(i).getCell(1).getStringCellValue();
+//			map.put(key, value);
+//
+//		}
+//		for (Entry<String, String> ss : map.entrySet()) {
+//			driver.findElement(By.name(ss.getKey())).sendKeys(ss.getValue() + ranInt, Keys.ENTER);
+//
+//		}
 
-		}
-		for (Entry<String, String> ss : map.entrySet()) {
-			driver.findElement(By.name(ss.getKey())).sendKeys(ss.getValue() + ranInt, Keys.ENTER);
-
-		}
+		EUtil.getMultipleDataFromExcel(driver, "Doctor_Specialization_AdminModu", 1, 0, "");
 
 		// Validation
 		WebElement confirmationMessage = driver
