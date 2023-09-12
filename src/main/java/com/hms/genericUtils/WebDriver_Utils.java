@@ -216,7 +216,7 @@ public class WebDriver_Utils {
 
 	/**
 	 * 
-	 * This method is used to accept alert popup
+	 * This method is used to accept alert pop-up
 	 * 
 	 * @param driver
 	 * @param expectedMsg
