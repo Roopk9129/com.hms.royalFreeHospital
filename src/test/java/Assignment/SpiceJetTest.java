@@ -19,7 +19,7 @@ public class SpiceJetTest {
 		String DepatureDate = "//div[text()='Departure Date']";
 		String DepatureMonth = "September ";
 		String DepatureYear = "2023";
-		int Depaturedate = 5;
+		int Depaturedate = 20;
 
 		String ReturnMonth = "December ";
 		String ReturnYear = "2023";
@@ -51,7 +51,6 @@ public class SpiceJetTest {
 		WebElement RElement = driver.findElement(By.xpath(roundTripRadioButton));
 		WebElement SourceEle = driver.findElement(By.xpath(Source));
 		WebElement DestinationEle = driver.findElement(By.xpath(Destination));
-//		WebElement DepatureDateEle = driver.findElement(By.xpath(DepatureDate));
 		WebElement PassengersEle = driver.findElement(By.xpath(Passengers));
 		WebElement CurrencyEle = driver.findElement(By.xpath(Currency));
 		WebElement SubmitBtnEle = driver.findElement(By.xpath(SubmitBtn));

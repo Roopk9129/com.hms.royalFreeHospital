@@ -70,14 +70,16 @@ public class kayakTest {
 		windowHandle(driver, ExpectedWinTitle);
 		driver.findElement(By.xpath(OtherSort)).click();
 		driver.findElement(By.xpath(FilterOptions)).click();
+		Thread.sleep(1000);
 		List<WebElement> ListOfPrices = driver.findElements(By.xpath(Prices));
 		for (WebElement ele : ListOfPrices) {
 			String PriceTxt = ele.getText();
 			String normalized = PriceTxt.replaceAll("[^a-zA-Z0-9]", "");
 			int ConvertedToInt = Integer.parseInt(normalized);
+			Thread.sleep(1000);
 
 			// Checking Lowest with condition
-			if (ConvertedToInt < 10000) {
+			if (ConvertedToInt < 25000) {
 				System.out.println(ConvertedToInt);
 			}
 		}
