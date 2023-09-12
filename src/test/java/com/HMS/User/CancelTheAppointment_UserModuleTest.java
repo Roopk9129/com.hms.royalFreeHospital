@@ -1,35 +1,58 @@
 package com.HMS.User;
 
-import java.time.Duration;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import com.hms.genericUtils.ExcelFileUtility;
+import com.hms.genericUtils.FileUtility;
+import com.hms.genericUtils.Java_Utils;
+import com.hms.genericUtils.WebDriver_Utils;
 
 public class CancelTheAppointment_UserModuleTest {
 
-	public static void main(String[] args) throws InterruptedException {
-		/*
-		 * @author: S Roop Kumar 
-		 * 
-		 * Click on Book 'Appointment History' from Main
+	public static void main(String[] args) throws Throwable {
+		/* 
+		 * @author: S Roop Kumar Click on Book 'Appointment History' from Main
 		 * Navigation pane Click on 'cancel' link under Action column Click 'Ok' on
 		 * alert Message
 		 * 
 		 */
 
 		// Browser Control
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		driver.get("http://rmgtestingserver/domain/Hospital_Management_System/");
+		WebDriver driver = null;
+		// Object Creation for Utility Files
+		FileUtility fUtil = new FileUtility();
+		WebDriver_Utils wUtil = new WebDriver_Utils();
+		ExcelFileUtility EUtil = new ExcelFileUtility();
+		Java_Utils jUtil = new Java_Utils();
+
+		String brow = fUtil.propertyFileDataFetch("browsername");
+		String Url = fUtil.propertyFileDataFetch("url");
+		String un = fUtil.propertyFileDataFetch("userun");
+		String psd = fUtil.propertyFileDataFetch("userpsd");
+
+		// Browser Control
+		if (brow.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+			System.out.println("Chrome has launched");
+
+		} else if (brow.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+			System.out.println("Firefox has launched");
+
+		} else {
+			System.out.println("Invalid Browser name");
+		}
+
+		wUtil.maximizeBrowser(driver);
+		driver.get(Url);
+		wUtil.implicitWait(driver, 20);
 
 		// Key Values
 		String ModuleName = "Patients";
-		String un = "23rdsep@gmail.com";
-		String psd = "9876543210";
 		String doctorSpec = "Urology";
 		String Dname = "Karthi7568";
 		String Date = "2023-09-22";
@@ -46,12 +69,11 @@ public class CancelTheAppointment_UserModuleTest {
 		driver.findElement(By.xpath("//input[@name='appdate']")).sendKeys(Date);
 		driver.findElement(By.xpath("//button[@name='submit']")).click();
 
-		Alert a = driver.switchTo().alert();
-		a.accept();
+		wUtil.acceptAlert(driver);
 		driver.findElement(By.xpath("//span[text()=' Appointment History ']")).click();
 		driver.findElement(By.xpath("(//td[text()='" + Dname + "']/following-sibling::td/div/a[text()='Cancel'])[1]"))
 				.click();
-		a.accept();
+		wUtil.acceptAlert(driver);
 
 		WebElement ConfMsg = driver.findElement(By.xpath("//p[contains(text(),'Your appointment canceled !!')]"));
 

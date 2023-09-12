@@ -38,7 +38,7 @@ public class Assignment_08Sep {
 			if (Updateset >= 1) {
 				System.out.println('"' + str + '"' + " has been inserted in to Database");
 			}
-		}
+		}conn.close();
 	}
 
 }

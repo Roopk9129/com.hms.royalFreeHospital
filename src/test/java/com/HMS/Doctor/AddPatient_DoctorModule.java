@@ -14,15 +14,45 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.hms.genericUtils.ExcelFileUtility;
+import com.hms.genericUtils.FileUtility;
+import com.hms.genericUtils.Java_Utils;
+import com.hms.genericUtils.WebDriver_Utils;
 
 public class AddPatient_DoctorModule {
 
 	public static void main(String[] args) throws Throwable {
+		WebDriver driver = null;
+		// Object Creation for Utility Files
+		FileUtility fUtil = new FileUtility();
+		WebDriver_Utils wUtil = new WebDriver_Utils();
+		ExcelFileUtility EUtil = new ExcelFileUtility();
+		Java_Utils jUtil = new Java_Utils();
+		
+		
+		String brow = fUtil.propertyFileDataFetch("browsername");
+		String Url = fUtil.propertyFileDataFetch("url");
+		String un = fUtil.propertyFileDataFetch("doctorun");
+		String psd = fUtil.propertyFileDataFetch("doctorpsd");
+
 		// Browser Control
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		driver.get("http://rmgtestingserver/domain/Hospital_Management_System/");
+		if (brow.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+			System.out.println("Chrome has launched");
+
+		} else if (brow.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+			System.out.println("Firefox has launched");
+
+		} else {
+			System.out.println("Invalid Browser name");
+		}
+
+		wUtil.maximizeBrowser(driver);
+		driver.get(Url);
+		wUtil.implicitWait(driver, 20);
 
 		// RandomInt
 		Random r = new Random();
@@ -31,8 +61,6 @@ public class AddPatient_DoctorModule {
 
 		// Key Values
 		String ModuleName = "Doctors Login";
-		String un = "Cordiologist.Prasad@mail.com";
-		String psd = "prasad123";
 
 		// Test Data from excel
 		FileInputStream fi = new FileInputStream(".//src//test//resources//Admin_Module.xlsx");
@@ -58,22 +86,23 @@ public class AddPatient_DoctorModule {
 		driver.findElement(
 				By.xpath("//span[text()=' Patients ']/following::ul/descendant::span[text()=' Add Patient']")).click();
 
-		HashedMap<String, String> map = new HashedMap<>();
-
-		for (int i = 1; i <= lr; i++) {
-			String key = sh.getRow(i).getCell(0).getStringCellValue();
-			String value = sh.getRow(i).getCell(1).getStringCellValue();
-			map.put(key, value);
-		}
-
-		for (Entry<String, String> ss : map.entrySet()) {
-			if(ss.getKey().equals("doctorname")) {
-				driver.findElement(By.xpath(ss.getKey())).sendKeys(ss.getValue());
-				
-			}
-			
-
-		}
+//		HashedMap<String, String> map = new HashedMap<>();
+//
+//		for (int i = 1; i <= lr; i++) {
+//			String key = sh.getRow(i).getCell(0).getStringCellValue();
+//			String value = sh.getRow(i).getCell(1).getStringCellValue();
+//			map.put(key, value);
+//		}
+//
+//		for (Entry<String, String> ss : map.entrySet()) {
+//			if(ss.getKey().equals("doctorname")) {
+//				driver.findElement(By.xpath(ss.getKey())).sendKeys(ss.getValue());
+//				
+//			}
+//			
+//
+//		}
+		
 		driver.findElement(By.xpath("//input[@placeholder='Enter Patient Name']")).sendKeys(PatientName);
 		driver.findElement(By.xpath("//input[@placeholder='Enter Patient Contact no']")).sendKeys(PatientContactno);
 		driver.findElement(By.xpath("//input[@placeholder='Enter Patient Email id']")).sendKeys(PatientEmail);
@@ -102,7 +131,7 @@ public class AddPatient_DoctorModule {
 			}
 		}
 		Thread.sleep(2000);
-		driver.close();
+		driver.quit();
 	}
 
 }

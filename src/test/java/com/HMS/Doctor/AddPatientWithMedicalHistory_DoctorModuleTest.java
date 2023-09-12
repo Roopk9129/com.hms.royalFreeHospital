@@ -10,6 +10,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.hms.genericUtils.ExcelFileUtility;
+import com.hms.genericUtils.FileUtility;
+import com.hms.genericUtils.Java_Utils;
+import com.hms.genericUtils.WebDriver_Utils;
 
 public class AddPatientWithMedicalHistory_DoctorModuleTest {
 	/*
@@ -24,27 +30,44 @@ public class AddPatientWithMedicalHistory_DoctorModuleTest {
 	 */
 
 	public static void main(String[] args) throws Throwable {
-		//property file
-		FileInputStream fis = new FileInputStream(".\\src\\test\\resources\\CommonData.properties");
-		Properties prop = new Properties();
-		prop.load(fis);
-		prop.getProperty("browsername");
-		// Browser Control
+		WebDriver driver = null;
+		// Object Creation for Utility Files
+		FileUtility fUtil = new FileUtility();
+		WebDriver_Utils wUtil = new WebDriver_Utils();
+		ExcelFileUtility EUtil = new ExcelFileUtility();
+		Java_Utils jUtil = new Java_Utils();
 		
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		driver.get("http://rmgtestingserver/domain/Hospital_Management_System/");
+		
+		String brow = fUtil.propertyFileDataFetch("browsername");
+		String Url = fUtil.propertyFileDataFetch("url");
+		String un = fUtil.propertyFileDataFetch("doctorun");
+		String psd = fUtil.propertyFileDataFetch("doctorpsd");
+
+		// Browser Control
+		if (brow.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+			System.out.println("Chrome has launched");
+
+		} else if (brow.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+			System.out.println("Firefox has launched");
+
+		} else {
+			System.out.println("Invalid Browser name");
+		}
+
+		wUtil.maximizeBrowser(driver);
+		driver.get(Url);
+		wUtil.implicitWait(driver, 20);
 
 //				RandomInt
-		Random r = new Random();
-		int ranInt = r.nextInt(10000);
-		int TempranInt = r.nextInt(100);
+		int TempranInt = jUtil.randomIntegerNumber(100);
+		int ranInt = jUtil.randomIntegerNumber(10000);
+		
 
 		// Key Values
 		String ModuleName = "Doctors Login";
-		String un = "Cordiologist.Prasad@mail.com";
-		String psd = "prasad123";
+		
 
 		// Patient Details
 		String PatientName = "Raja_" + ranInt;

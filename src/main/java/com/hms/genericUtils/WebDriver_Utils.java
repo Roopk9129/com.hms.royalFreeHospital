@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.bouncycastle.jcajce.provider.asymmetric.ecgost.KeyAgreementSpi.ECVKO;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -255,12 +256,28 @@ public class WebDriver_Utils {
 	}
 
 	/**
-	 * This method is used to accept the alert popup
+	 * This method is used to accept the alert pop-up
 	 * 
 	 * @param driver
+	 * @throws InterruptedException
 	 */
+	public void acceptAlert(WebDriver driver, String ExpectedAlertMsg, String PrintStatement, String elseMessage)
+			throws InterruptedException {
+
+		Alert ala = driver.switchTo().alert();
+		if (ala.getText().equalsIgnoreCase(ExpectedAlertMsg)) {
+			System.out.println(PrintStatement);
+		} else {
+			System.out.println(elseMessage);
+		}
+		Thread.sleep(2000);
+		ala.accept();
+
+	}
+
 	public void acceptAlert(WebDriver driver) {
-		driver.switchTo().alert().accept();
+		Alert ala = driver.switchTo().alert();
+		ala.accept();
 	}
 
 	/**

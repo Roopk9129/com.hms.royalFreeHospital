@@ -1,10 +1,8 @@
 package com.HMS.admin;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -64,22 +62,25 @@ public class ManageDoctor_AdminModuleTest {
 				.click();
 		driver.findElement(By.xpath("(//a[@class='btn btn-transparent btn-xs tooltips'])[1]")).click();
 
-		Alert cofir = driver.switchTo().alert();
-		String Message = cofir.getText();
-		if (Message.equalsIgnoreCase("Are you sure you want to delete?")) {
-			System.out.println(Message + " --->Alert Popup is dispalyed ");
-			cofir.accept();
-			WebElement DataDeletedMessage = driver.findElement(By.xpath("//p[contains(text(),'data deleted !!')]"));
-			if (DataDeletedMessage.isDisplayed()) {
-				System.out.println(DataDeletedMessage.getText() + " ---> Confirmation Message has been displayed");
+		wUtil.acceptAlert(driver, "Are you sure you want to delete?", "Confirmation Message has been displayed",
+				"Confirmation Message has not been displayed");
 
-			} else {
-				System.out.println("Confirmation Message has not been displayed");
-			}
-
-		} else {
-			System.out.println("Alert popup is failed to display");
-		}
+//		Alert cofir = driver.switchTo().alert();
+//		String Message = cofir.getText();
+//		if (Message.equalsIgnoreCase("Are you sure you want to delete?")) {
+//			System.out.println(Message + " --->Alert Popup is dispalyed ");
+//			cofir.accept();
+//			WebElement DataDeletedMessage = driver.findElement(By.xpath("//p[contains(text(),'data deleted !!')]"));
+//			if (DataDeletedMessage.isDisplayed()) {
+//				System.out.println(DataDeletedMessage.getText() + " ---> Confirmation Message has been displayed");
+//
+//			} else {
+//				System.out.println("Confirmation Message has not been displayed");
+//			}
+//
+//		} else {
+//			System.out.println("Alert popup is failed to display");
+//		}
 
 	}
 
