@@ -252,7 +252,8 @@ public class WebDriver_Utils {
 	 * @param element
 	 */
 	public void doubleClick(WebDriver driver, WebElement element) {
-		new Actions(driver).doubleClick(element);
+		new Actions(driver).doubleClick(element).perform();
+		;
 	}
 
 	/**

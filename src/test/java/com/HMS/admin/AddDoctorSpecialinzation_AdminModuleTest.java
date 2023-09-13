@@ -69,11 +69,7 @@ public class AddDoctorSpecialinzation_AdminModuleTest {
 		wUtil.maximizeBrowser(driver);
 		driver.get(Url);
 		wUtil.implicitWait(driver, 20);
-		// Test Data from excel
-		FileInputStream fi = new FileInputStream(".//src//test//resources//Admin_Module.xlsx");
-		Workbook w = WorkbookFactory.create(fi);
-		Sheet sh = w.getSheet("Doctor_Specialization_AdminModu");
-		int lr = sh.getLastRowNum();
+		
 
 //		RandomInt
 		int ranInt = jUtil.randomIntegerNumber(10000);
@@ -82,8 +78,7 @@ public class AddDoctorSpecialinzation_AdminModuleTest {
 		String ModuleName = "Admin Login";
 
 		// Test Script to create ADD DOCTOR SPECIALIZATION
-		driver.findElement(By.xpath("//h3[text()='" + ModuleName
-				+ "']/ancestor::div[@class='listview_1_of_3 images_1_of_3']/descendant::a")).click();
+		driver.findElement(By.xpath("//h3[text()='" + ModuleName+ "']/ancestor::div[@class='listview_1_of_3 images_1_of_3']/descendant::a")).click();
 		driver.findElement(By.xpath("//input[@name='username']")).sendKeys(un);
 		driver.findElement(By.xpath("//input[@name='password']")).sendKeys(psd, Keys.ENTER);
 		driver.findElement(By.xpath("//ul[@class='main-navigation-menu']/descendant::span[text()=' Doctors ']"))

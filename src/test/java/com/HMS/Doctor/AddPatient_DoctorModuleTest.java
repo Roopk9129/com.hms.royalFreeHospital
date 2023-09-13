@@ -21,7 +21,7 @@ import com.hms.genericUtils.FileUtility;
 import com.hms.genericUtils.Java_Utils;
 import com.hms.genericUtils.WebDriver_Utils;
 
-public class AddPatient_DoctorModule {
+public class AddPatient_DoctorModuleTest {
 
 	public static void main(String[] args) throws Throwable {
 		WebDriver driver = null;

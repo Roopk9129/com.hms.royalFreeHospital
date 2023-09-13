@@ -3,6 +3,7 @@ package Assignment;
 import java.sql.*;
 import java.util.Scanner;
 import com.mysql.cj.jdbc.Driver;
+
 /*
  * @author S Roop Kumar
  */
@@ -29,7 +30,7 @@ public class Assignment_08Sep {
 			}
 		}
 		if (flag) {
-			System.out.println("The Name "+'"' + str + '"' + " is already inserted in to Database");
+			System.out.println("The Name " + '"' + str + '"' + " is already inserted in to Database");
 
 		} else {
 			System.out.println('"' + str + '"' + " not found in Database \n");
@@ -38,7 +39,8 @@ public class Assignment_08Sep {
 			if (Updateset >= 1) {
 				System.out.println('"' + str + '"' + " has been inserted in to Database");
 			}
-		}conn.close();
+		}
+		conn.close();
 	}
 
 }

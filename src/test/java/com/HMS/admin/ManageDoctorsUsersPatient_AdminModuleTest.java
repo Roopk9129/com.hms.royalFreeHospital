@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ManageDoctorsUsersPatient_AdminModule {
+public class ManageDoctorsUsersPatient_AdminModuleTest {
 	/*
 	 * @Author S Roop Kumar
 	 * 

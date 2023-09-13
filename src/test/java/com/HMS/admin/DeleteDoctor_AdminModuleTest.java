@@ -16,7 +16,7 @@ import com.hms.genericUtils.FileUtility;
 import com.hms.genericUtils.Java_Utils;
 import com.hms.genericUtils.WebDriver_Utils;
 
-public class DeleteDoctor_AdminModuleTest2 {
+public class DeleteDoctor_AdminModuleTest {
 	/*
 	 * Admin should able to Manage Doctors
 	 * 
