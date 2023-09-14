@@ -6,8 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.hms.genericUtils.ExcelFileUtility;
+import com.hms.genericUtils.WebDriver_Utils;
 
-public class AddDoctorSpecializationPage extends ExcelFileUtility {
+public class AddDoctorSpecializationPage extends WebDriver_Utils {
 
 	@FindBy(xpath = "//input[@name='doctorspecilization']")
 	private WebElement doctorspecilizationEdt;

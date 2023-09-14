@@ -74,4 +74,16 @@ public class AddPatientPage {
 		return AddBtn;
 	}
 
+	public void addPatient(String PatientName, String PatientPhoneNo, String Email, String address, String age,
+			String MedicalHis) {
+		getAddPatientEdt().sendKeys(PatientName);
+		getAddPatientContactNoEdt().sendKeys(PatientPhoneNo);
+		getAddPatientEmailIDEdt().sendKeys(Email);
+		getAddPatientAddressEdt().sendKeys(address);
+		getAddPatientAgeEdt().sendKeys(age);
+		getAddPatientMediacalhisEdt().sendKeys(MedicalHis);
+		getAddBtn().click();
+
+	}
+
 }

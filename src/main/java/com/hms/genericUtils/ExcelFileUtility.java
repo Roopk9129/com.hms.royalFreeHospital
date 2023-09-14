@@ -67,7 +67,7 @@ public class ExcelFileUtility {
 		}
 		for (Entry<String, String> ss : map.entrySet()) {
 			if (ss.getKey().contains(expectedKey)) {
-				driver.findElement(By.name(ss.getKey()))
+				driver.findElement(By.xpath(ss.getKey()))
 						.sendKeys(ss.getValue() + new Java_Utils().randomIntegerNumber(1000));
 
 			} else {
@@ -75,6 +75,24 @@ public class ExcelFileUtility {
 			}
 		}
 
+	}
+
+	public String pullMultipleDataFromSheet(String SheetName) throws Throwable {
+	    FileInputStream fis = new FileInputStream(IPathConstants.excelFilePath);
+	    Workbook wb = WorkbookFactory.create(fis);
+	    Sheet sh = wb.getSheet(SheetName);
+	    int LR = sh.getLastRowNum();
+	    short LC = sh.getRow(0).getLastCellNum();
+	    StringBuilder result = new StringBuilder();
+
+	    for (int i = 1; i <= LR; i++) {
+	        for (int j = 0; j < LC; j++) {
+	            String cellValue = sh.getRow(i).getCell(j).getStringCellValue();
+	            result.append(cellValue+"\n");
+	        }
+	    }
+
+	    return result.toString();
 	}
 
 }
