@@ -18,6 +18,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.hms.ObjectRepo.AddDoctorSpecializationPage;
 import com.hms.genericUtils.ExcelFileUtility;
 import com.hms.genericUtils.FileUtility;
 import com.hms.genericUtils.Java_Utils;
@@ -97,6 +98,7 @@ public class AddDoctorSpecialinzation_AdminModuleTest {
 //			driver.findElement(By.name(ss.getKey())).sendKeys(ss.getValue() + ranInt, Keys.ENTER);
 //
 //		}
+		
 
 		EUtil.getMultipleDataFromExcel(driver, "Doctor_Specialization_AdminModu", 1, 0, "");
 

@@ -5,40 +5,30 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AddDoctorSpecializationPage {
-	
+import com.hms.genericUtils.ExcelFileUtility;
+
+public class AddDoctorSpecializationPage extends ExcelFileUtility {
+
 	@FindBy(xpath = "//input[@name='doctorspecilization']")
-	private WebElement BetweenwdatesreportsLink;
-	
-	@FindBy(xpath="//button[@name='submit']")
+	private WebElement doctorspecilizationEdt;
+
+	@FindBy(xpath = "//button[@name='submit']")
 	private WebElement SubmitBtn;
-	
-	@FindBy(xpath="//select[@name='Doctorspecialization']")
-	private WebElement DoctorSpecializationDD;
-	
-	@FindBy(xpath="//input[@name='docname']")
-	private WebElement DoctorNameEdt;
-	
-	@FindBy(xpath="//textarea[@name='clinicaddress']")
-	private WebElement ClinicAddress;
-	
-	@FindBy(xpath="//input[@name='docfees']")
-	private WebElement DoctorConsultancyFeesEdt;
-	
-	@FindBy(xpath="//input[@name='doccontact']")
-	private WebElement DoctorContactNoEdt;
-	
-	@FindBy(xpath="//input[@name='docemail']")
-	private WebElement DoctorEmailEdt;
-	
-	@FindBy(xpath="//input[@name='npass']")
-	private WebElement DoctorPsdEdt;
-	
-	@FindBy(xpath="//input[@name='cfpass']")
-	private WebElement DoctorCfPsdEdt;
-	
+
 	public AddDoctorSpecializationPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 
+	public WebElement getdoctorspecilizationEdt() {
+		return doctorspecilizationEdt;
+	}
+
+	public WebElement getSubmitBtn() {
+		return SubmitBtn;
+	}
+
+	public void addSpecilization(String SpecName) {
+		getdoctorspecilizationEdt().sendKeys(SpecName);
+		getSubmitBtn().click();
+	}
 }
