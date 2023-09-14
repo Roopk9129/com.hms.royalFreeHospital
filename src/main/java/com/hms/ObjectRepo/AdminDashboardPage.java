@@ -34,7 +34,7 @@ public class AdminDashboardPage {
 	@FindBy(xpath = "//ul[@class='main-navigation-menu']/descendant::span[text()=' Doctors ']")
 	private WebElement DoctorsLink;
 
-	@FindBy(xpath = "//ul[@class='main-navigation-menu']/descendant::span[text()=' Doctors ']")
+	@FindBy(xpath = "//ul[@class='main-navigation-menu']/descendant::span[text()=' Dashboard ']")
 	private WebElement DashboardLink;
 
 	@FindBy(xpath = "//ul[@class='main-navigation-menu']/descendant::span[text()=' Users ']")
@@ -43,7 +43,7 @@ public class AdminDashboardPage {
 	@FindBy(xpath = "//ul[@class='main-navigation-menu']/descendant::span[text()=' Patients ']")
 	private WebElement PatientsLink;
 
-	@FindBy(xpath = "//ul[@class='main-navigation-menu']/descendant::span[text()=' Appointment History ']]")
+	@FindBy(xpath = "//ul[@class='main-navigation-menu']/descendant::span[text()=' Appointment History ']")
 	private WebElement AppointmentHistoryLink;
 
 	@FindBy(xpath = "//ul[@class='main-navigation-menu']/descendant::span[text()=' Conatctus Queries ']")
@@ -85,6 +85,8 @@ public class AdminDashboardPage {
 	@FindBy(xpath = "//ul[@class='main-navigation-menu']/descendant::span[text()='B/w dates reports ']")
 	private WebElement BetweenwdatesreportsLink;
 
+	@FindBy(xpath = "//ul[@class='main-navigation-menu']/descendant::span[text()='B/w dates reports ']")
+	private WebElement ContactUs;
 
 	public AdminDashboardPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -192,6 +194,88 @@ public class AdminDashboardPage {
 
 	public WebElement getBetweenwdatesreportsLink() {
 		return BetweenwdatesreportsLink;
+	}
+
+	public WebElement getContactUs() {
+		return ContactUs;
+	}
+
+	// Business Libraries
+
+	public void clickOnDashboard() {
+		getDashboardLink().click();
+	}
+
+	public void clickOnDoctors() {
+		getDoctorsLink().click();
+	}
+
+	public void clickOnDoctorSpecilization() {
+		getDoctorSpecializationLink().click();
+
+	}
+
+	public void clickOnAddDoctor() {
+		getAddDoctorLink().click();
+
+	}
+
+	public void clickOnManageDoctor() {
+		getManageDoctorsLink().click();
+
+	}
+
+	public void clickOnUsers() {
+		getUsersLink().click();
+
+	}
+
+	public void clickOnManageUsers() {
+		getManageUsersLink().click();
+
+	}
+
+	public void clickOnPatientLink() {
+		getPatientsLink().click();
+
+	}
+
+	public void clickOnManagePatient() {
+		getManagePatientsLink().click();
+
+	}
+
+	public void clickOnAppointmentHistory() {
+		getAppointmentHistoryLink().click();
+
+	}
+
+	public void clickOnContactUsQueries() {
+		getConatctusQueries().click();
+
+	}
+
+	public void clickOnDoctorSessionLogs() {
+		getDoctorSessionLogsLink().click();
+
+	}
+
+	public void clickOnUserSessionsLogs() {
+		getUserSessionLogsLink().click();
+
+	}
+
+	public void clickOnReports() {
+		getReportsLink().click();
+	}
+
+	public void clickOnBetweenDates() {
+		getBetweenwdatesreportsLink().click();
+	}
+
+	public void clickOnPatientSearch() {
+		getPatientSearchLink().click();
+
 	}
 
 }

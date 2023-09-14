@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.hms.ObjectRepo.AdminDashboardPage;
 import com.hms.genericUtils.ExcelFileUtility;
 import com.hms.genericUtils.FileUtility;
 import com.hms.genericUtils.Java_Utils;
@@ -55,6 +56,9 @@ public class DeleteDoctor_AdminModuleTest {
 
 		// Key Values
 		String ModuleName = "Admin Login";
+		
+		//Object creation
+		AdminDashboardPage ADP = new AdminDashboardPage(driver);
 
 		// Test Script to create ADD DOCTOR SPECIALIZATION
 		driver.findElement(By.xpath("//h3[text()='" + ModuleName
@@ -63,9 +67,11 @@ public class DeleteDoctor_AdminModuleTest {
 		driver.findElement(By.xpath("//input[@name='password']")).sendKeys(psd, Keys.ENTER);
 		driver.findElement(By.xpath("//ul[@class='main-navigation-menu']/descendant::span[text()=' Doctors ']"))
 				.click();
-		driver.findElement(By.xpath(
-				"//ul[@class='main-navigation-menu']/descendant::span[text()=' Doctors ']/following::span[text()=' Manage Doctors ']"))
-				.click();
+		ADP.clickOnManageDoctor();
+		
+//		driver.findElement(By.xpath(
+//				"//ul[@class='main-navigation-menu']/descendant::span[text()=' Doctors ']/following::span[text()=' Manage Doctors ']"))
+//				.click();
 		driver.findElement(By.xpath("(//a[@class='btn btn-transparent btn-xs tooltips'])[1]")).click();
 
 		Alert cofir = driver.switchTo().alert();

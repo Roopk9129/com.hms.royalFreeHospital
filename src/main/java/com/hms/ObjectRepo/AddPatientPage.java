@@ -83,7 +83,6 @@ public class AddPatientPage {
 		getAddPatientAgeEdt().sendKeys(age);
 		getAddPatientMediacalhisEdt().sendKeys(MedicalHis);
 		getAddBtn().click();
-
 	}
 
 }
