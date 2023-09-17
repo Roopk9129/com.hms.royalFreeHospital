@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.practice.UsingCmdTest">
+      <class name="com.HMS.admin.dummy">
         <methods>
-          <include name="m1"/>
+          <include name="main"/>
         </methods>
-      </class> <!-- com.practice.UsingCmdTest -->
+      </class> <!-- com.HMS.admin.dummy -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

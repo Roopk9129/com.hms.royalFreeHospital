@@ -3,6 +3,7 @@ package com.hms.genericUtils;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Map.Entry;
+
 import org.apache.commons.collections4.map.HashedMap;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -52,8 +53,8 @@ public class ExcelFileUtility {
 
 	}
 
-	public void getMultipleDataFromExcel(WebDriver driver, String SheetName, int rowNum, int cellNum,
-			String expectedKey) throws Throwable {
+	public HashedMap<String, String> getMultipleDataFromExcel(WebDriver driver, String SheetName, int rowNum,
+			int cellNum, String expectedKey) throws Throwable {
 		FileInputStream fis = new FileInputStream(IPathConstants.excelFilePath);
 		Workbook wb = WorkbookFactory.create(fis);
 		Sheet sh = wb.getSheet(SheetName);
@@ -70,29 +71,45 @@ public class ExcelFileUtility {
 				driver.findElement(By.xpath(ss.getKey()))
 						.sendKeys(ss.getValue() + new Java_Utils().randomIntegerNumber(1000));
 
-			} else {
-				driver.findElement(By.name(ss.getKey())).sendKeys(ss.getValue());
 			}
 		}
+		return map;
 
 	}
 
 	public String pullMultipleDataFromSheet(String SheetName) throws Throwable {
-	    FileInputStream fis = new FileInputStream(IPathConstants.excelFilePath);
-	    Workbook wb = WorkbookFactory.create(fis);
-	    Sheet sh = wb.getSheet(SheetName);
-	    int LR = sh.getLastRowNum();
-	    short LC = sh.getRow(0).getLastCellNum();
-	    StringBuilder result = new StringBuilder();
+		FileInputStream fis = new FileInputStream(IPathConstants.excelFilePath);
+		Workbook wb = WorkbookFactory.create(fis);
+		Sheet sh = wb.getSheet(SheetName);
+		int LR = sh.getLastRowNum();
+		short LC = sh.getRow(0).getLastCellNum();
+		StringBuilder result = new StringBuilder();
 
-	    for (int i = 1; i <= LR; i++) {
-	        for (int j = 0; j < LC; j++) {
-	            String cellValue = sh.getRow(i).getCell(j).getStringCellValue();
-	            result.append(cellValue+"\n");
-	        }
-	    }
+		for (int i = 1; i <= LR; i++) {
+			for (int j = 0; j < LC; j++) {
+				String cellValue = sh.getRow(i).getCell(j).getStringCellValue();
+				result.append(cellValue + "\n");
+			}
+		}
 
-	    return result.toString();
+		return result.toString();
+	}
+
+	public Object[][] dataProviderr(String SheetName) throws Throwable {
+		FileInputStream fis = new FileInputStream(IPathConstants.excelFilePath);
+		Workbook wb = WorkbookFactory.create(fis);
+		Sheet sheet = wb.getSheet(SheetName);
+		int lr = sheet.getLastRowNum() ;
+		int lc = sheet.getRow(0).getLastCellNum();
+		Object[][] obj = new Object[lr][lc];
+		for (int i = 0; i <lr; i++) {
+			for (int j = 0; i < lc; j++) {
+				obj[i][j] = sheet.getRow(i).getCell(j).getStringCellValue();
+
+			}
+		}
+		return obj;
+
 	}
 
 }

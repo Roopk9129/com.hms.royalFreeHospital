@@ -1,23 +1,12 @@
 package com.HMS.admin;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.time.Duration;
-import java.util.Map.Entry;
-import java.util.Properties;
-import java.util.Random;
-
-import org.apache.commons.collections4.map.HashedMap;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import com.hms.ObjectRepo.AddDoctorSpecializationPage;
 import com.hms.ObjectRepo.AdminDashboardPage;
 import com.hms.ObjectRepo.AdminLoginPage;
@@ -28,14 +17,13 @@ import com.hms.genericUtils.Java_Utils;
 import com.hms.genericUtils.WebDriver_Utils;
 
 public class AddDoctorSpecialinzation_AdminModuleTest {
-
-	public static void main(String[] args) throws InterruptedException, Throwable {
-		/*
-		 * Admin should be able to create Doctor Specialization
-		 * 
-		 * @Author: S Roop Kumar
-		 */
-
+	/*
+	 * Admin should be able to create Doctor Specialization
+	 * 
+	 * @Author: S Roop Kumar
+	 */
+	@Test(dataProvider = "dp")
+	public void addDoctorSpecialinzation_AdminModuleTest(String value) throws Throwable {
 		WebDriver driver = null;
 		// Object Creation for Utility Files
 		FileUtility fUtil = new FileUtility();
@@ -69,13 +57,13 @@ public class AddDoctorSpecialinzation_AdminModuleTest {
 		AddDoctorSpecializationPage ADS = new AddDoctorSpecializationPage(driver);
 		AdminLoginPage ALD = new AdminLoginPage(driver);
 		AdminDashboardPage ADP = new AdminDashboardPage(driver);
+		
 		HP.getAdminModule().click();
 		ALD.AdminLogin(un, psd);
 		ADP.getDoctorsLink().click();
 		ADP.getDoctorSpecializationLink().click();
-		ADS.addSpecilization(psd);
-
-		EUtil.pullMultipleDataFromSheet("Doctor_Specialization_AdminModu");
+		ADS.getdoctorspecilizationEdt().sendKeys(value);
+		ADS.getSubmitBtn().click();
 
 		// Validation
 		WebElement confirmationMessage = driver
@@ -84,11 +72,17 @@ public class AddDoctorSpecialinzation_AdminModuleTest {
 			System.out.println("DOCTOR SPECIALIZATION is created");
 			System.out.println(driver.findElement(By.xpath("//div[@class='panel panel-white']/descendant::p")).getText()
 					+ " --> Message is displayed successfully");
-
 		}
 		Thread.sleep(2000);
 		driver.quit();
+	}
+	
 
+	@DataProvider
+	public Object[][] dp() throws Throwable {
+		ExcelFileUtility Eutil = new ExcelFileUtility();
+		Object[][] value = Eutil.dataProviderr("Doctor_Specialization_AdminModu");
+		return value;
 	}
 
 }

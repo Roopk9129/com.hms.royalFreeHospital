@@ -76,6 +76,7 @@ public class AddPatientPage {
 
 	public void addPatient(String PatientName, String PatientPhoneNo, String Email, String address, String age,
 			String MedicalHis) {
+		
 		getAddPatientEdt().sendKeys(PatientName);
 		getAddPatientContactNoEdt().sendKeys(PatientPhoneNo);
 		getAddPatientEmailIDEdt().sendKeys(Email);

@@ -1,5 +1,9 @@
 package com.hms.ObjectRepo;
 
+import java.util.Map.Entry;
+
+import org.apache.commons.collections4.map.HashedMap;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,6 +33,9 @@ public class AddDoctorPage {
 
 	@FindBy(xpath = "//input[@name='cfpass']")
 	private WebElement DoctorCfPsdEdt;
+
+	@FindBy(id = "submit")
+	private WebElement SubmitBtn;
 
 	public AddDoctorPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -65,5 +72,32 @@ public class AddDoctorPage {
 	public WebElement getDoctorCfPsdEdt() {
 		return DoctorCfPsdEdt;
 	}
-	
+
+	public WebElement getSubmitBtn() {
+		return SubmitBtn;
+	}
+
+	public void createDoctor(WebDriver driver, HashedMap<String, String> map) {
+		
+		for(Entry<String, String> ss:map.entrySet()) {
+			driver.findElement(By.xpath(ss.getKey())).sendKeys(ss.getValue());
+			
+		}
+		getSubmitBtn().click();
+		
+		
+		
+		
+		
+//		getDoctorSpecializationDD().sendKeys(Spec);
+//		getDoctorNameEdt().sendKeys(Name);
+//		getClinicAddress().sendKeys(address);
+//		getDoctorConsultancyFeesEdt().sendKeys(fee);
+//		getDoctorContactNoEdt().sendKeys(contact);
+//		getDoctorEmailEdt().sendKeys(email);
+//		getDoctorPsdEdt().sendKeys(psd);
+//		getDoctorCfPsdEdt().sendKeys(cnfpsd);
+		
+	}
+
 }

@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="0" passed="0" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-09-06T14:49:19 IST" name="Default suite" finished-at="2023-09-06T14:49:44 IST" duration-ms="24537">
+  <suite started-at="2023-09-17T15:55:27 IST" name="Default suite" finished-at="2023-09-17T15:55:41 IST" duration-ms="13711">
     <groups>
     </groups>
-    <test started-at="2023-09-06T14:49:19 IST" name="Default test" finished-at="2023-09-06T14:49:44 IST" duration-ms="24537">
-      <class name="com.practice.UsingCmdTest">
-        <test-method signature="m1()[pri:0, instance:com.practice.UsingCmdTest@4c60d6e9]" started-at="2023-09-06T14:49:19 IST" name="m1" finished-at="2023-09-06T14:49:44 IST" duration-ms="24473" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- m1 -->
-      </class> <!-- com.practice.UsingCmdTest -->
+    <test started-at="2023-09-17T15:55:27 IST" name="Default test" finished-at="2023-09-17T15:55:41 IST" duration-ms="13711">
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
