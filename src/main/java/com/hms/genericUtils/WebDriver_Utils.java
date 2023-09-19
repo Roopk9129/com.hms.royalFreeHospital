@@ -145,7 +145,7 @@ public class WebDriver_Utils {
 	 */
 	public void dropdownHandle(WebElement element, String VisibleTxt) {
 		Select sel = new Select(element);
-		sel.deselectByVisibleText(VisibleTxt);
+		sel.selectByVisibleText(VisibleTxt);
 	}
 
 	/**
@@ -280,6 +280,11 @@ public class WebDriver_Utils {
 		Alert ala = driver.switchTo().alert();
 		ala.accept();
 	}
+	 public String getAlertText(WebDriver driver) {
+		 Alert alt = driver.switchTo().alert();
+		 return alt.getText();
+		 
+	 }
 
 	/**
 	 * This method is used to dismiss the alert

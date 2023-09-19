@@ -99,11 +99,11 @@ public class ExcelFileUtility {
 		FileInputStream fis = new FileInputStream(IPathConstants.excelFilePath);
 		Workbook wb = WorkbookFactory.create(fis);
 		Sheet sheet = wb.getSheet(SheetName);
-		int lr = sheet.getLastRowNum() ;
+		int lr = sheet.getLastRowNum() +1;
 		int lc = sheet.getRow(0).getLastCellNum();
 		Object[][] obj = new Object[lr][lc];
 		for (int i = 0; i <lr; i++) {
-			for (int j = 0; i < lc; j++) {
+			for (int j = 0; j < lc; j++) {
 				obj[i][j] = sheet.getRow(i).getCell(j).getStringCellValue();
 
 			}

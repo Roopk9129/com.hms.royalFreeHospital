@@ -6,6 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
+	public HomePage(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+
+	}
 
 	@FindBy(xpath = "//h3[text()='Admin Login']/ancestor::div[@class='listview_1_of_3 images_1_of_3']/descendant::a")
 	private WebElement AdminModule;
@@ -16,10 +20,7 @@ public class HomePage {
 	@FindBy(xpath = "//h3[text()='Patients']/ancestor::div[@class='listview_1_of_3 images_1_of_3']/descendant::a")
 	private WebElement PatientModule;
 
-	public HomePage(WebDriver driver) {
-		PageFactory.initElements(driver, this);
-
-	}
+	
 
 	public WebElement getAdminModule() {
 		return AdminModule;
@@ -31,6 +32,9 @@ public class HomePage {
 
 	public WebElement getPatientModule() {
 		return PatientModule;
+	}
+	public void clickOnAdminLogin() {
+		getAdminModule().click();
 	}
 
 }

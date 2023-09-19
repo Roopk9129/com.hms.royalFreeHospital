@@ -10,69 +10,39 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
 
 import com.hms.ObjectRepo.AdminDashboardPage;
+import com.hms.ObjectRepo.AdminLoginPage;
+import com.hms.ObjectRepo.HomePage;
+import com.hms.ObjectRepo.ManageDoctorPage;
+import com.hms.genericUtils.BaseClass;
 import com.hms.genericUtils.ExcelFileUtility;
 import com.hms.genericUtils.FileUtility;
 import com.hms.genericUtils.Java_Utils;
 import com.hms.genericUtils.WebDriver_Utils;
 
-public class DeleteDoctor_AdminModuleTest {
+public class DeleteDoctor_AdminModuleTest extends BaseClass {
 	/*
 	 * Admin should able to Manage Doctors
 	 * 
 	 * @author
 	 * 
 	 */
-
-	public static void main(String[] args) throws Throwable {
-		WebDriver driver = null;
-		// Object Creation for Utility Files
-		FileUtility fUtil = new FileUtility();
-		WebDriver_Utils wUtil = new WebDriver_Utils();
-		ExcelFileUtility EUtil = new ExcelFileUtility();
-		Java_Utils jUtil = new Java_Utils();
-
-		String brow = fUtil.propertyFileDataFetch("browsername");
-		String Url = fUtil.propertyFileDataFetch("url");
-		String un = fUtil.propertyFileDataFetch("adminun");
-		String psd = fUtil.propertyFileDataFetch("adminpsd");
-
-		// Browser Control
-		if (brow.equalsIgnoreCase("chrome")) {
-			driver = new ChromeDriver();
-			System.out.println("Chrome has launched");
-
-		} else if (brow.equalsIgnoreCase("firefox")) {
-			driver = new FirefoxDriver();
-			System.out.println("Firefox has launched");
-
-		} else {
-			System.out.println("Invalid Browser name");
-		}
-		driver.get(Url);
-		wUtil.maximizeBrowser(driver);
-		wUtil.implicitWait(driver, 20);
-
-		// Key Values
-		String ModuleName = "Admin Login";
-		
-		//Object creation
+	@Test
+	public void deleteDoctor_AdminModuleTest() throws Throwable {
+		// object creation for repo
+		HomePage HP = new HomePage(driver);
+		AdminLoginPage ALP = new AdminLoginPage(driver);
 		AdminDashboardPage ADP = new AdminDashboardPage(driver);
+		ManageDoctorPage MDP = new ManageDoctorPage(driver);
 
-		// Test Script to create ADD DOCTOR SPECIALIZATION
-		driver.findElement(By.xpath("//h3[text()='" + ModuleName
-				+ "']/ancestor::div[@class='listview_1_of_3 images_1_of_3']/descendant::a")).click();
-		driver.findElement(By.xpath("//input[@name='username']")).sendKeys(un);
-		driver.findElement(By.xpath("//input[@name='password']")).sendKeys(psd, Keys.ENTER);
-		driver.findElement(By.xpath("//ul[@class='main-navigation-menu']/descendant::span[text()=' Doctors ']"))
-				.click();
+		HP.clickOnAdminLogin();
+		ALP.AdminLogin(fUtil.propertyFileDataFetch("adminun"), fUtil.propertyFileDataFetch("adminpsd"));
+		ADP.clickOnDoctors();
 		ADP.clickOnManageDoctor();
-		
-//		driver.findElement(By.xpath(
-//				"//ul[@class='main-navigation-menu']/descendant::span[text()=' Doctors ']/following::span[text()=' Manage Doctors ']"))
-//				.click();
-		driver.findElement(By.xpath("(//a[@class='btn btn-transparent btn-xs tooltips'])[1]")).click();
+
+		MDP.deleteDoctor();
 
 		Alert cofir = driver.switchTo().alert();
 		String Message = cofir.getText();

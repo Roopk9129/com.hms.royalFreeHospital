@@ -1,22 +1,18 @@
 package com.HMS.admin;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.hms.ObjectRepo.AddDoctorSpecializationPage;
 import com.hms.ObjectRepo.AdminDashboardPage;
 import com.hms.ObjectRepo.AdminLoginPage;
 import com.hms.ObjectRepo.HomePage;
+import com.hms.genericUtils.BaseClass;
 import com.hms.genericUtils.ExcelFileUtility;
-import com.hms.genericUtils.FileUtility;
 import com.hms.genericUtils.Java_Utils;
-import com.hms.genericUtils.WebDriver_Utils;
 
-public class AddDoctorSpecialinzation_AdminModuleTest {
+public class AddDoctorSpecialinzation_AdminModuleTest extends BaseClass {
 	/*
 	 * Admin should be able to create Doctor Specialization
 	 * 
@@ -24,45 +20,19 @@ public class AddDoctorSpecialinzation_AdminModuleTest {
 	 */
 	@Test(dataProvider = "dp")
 	public void addDoctorSpecialinzation_AdminModuleTest(String value) throws Throwable {
-		WebDriver driver = null;
-		// Object Creation for Utility Files
-		FileUtility fUtil = new FileUtility();
-		WebDriver_Utils wUtil = new WebDriver_Utils();
-		ExcelFileUtility EUtil = new ExcelFileUtility();
-		Java_Utils jUtil = new Java_Utils();
-
-		String brow = fUtil.propertyFileDataFetch("browsername");
-		String Url = fUtil.propertyFileDataFetch("url");
-		String un = fUtil.propertyFileDataFetch("adminun");
-		String psd = fUtil.propertyFileDataFetch("adminpsd");
-
-		// Browser Control
-		if (brow.equalsIgnoreCase("chrome")) {
-			driver = new ChromeDriver();
-			System.out.println("Chrome has launched");
-
-		} else if (brow.equalsIgnoreCase("firefox")) {
-			driver = new FirefoxDriver();
-			System.out.println("Firefox has launched");
-
-		} else {
-			System.out.println("Invalid Browser name");
-		}
-
-		wUtil.maximizeBrowser(driver);
-		driver.get(Url);
-		wUtil.implicitWait(driver, 20);
 
 		HomePage HP = new HomePage(driver);
 		AddDoctorSpecializationPage ADS = new AddDoctorSpecializationPage(driver);
-		AdminLoginPage ALD = new AdminLoginPage(driver);
+		AdminLoginPage ALP = new AdminLoginPage(driver);
 		AdminDashboardPage ADP = new AdminDashboardPage(driver);
-		
-		HP.getAdminModule().click();
-		ALD.AdminLogin(un, psd);
+		HP.clickOnAdminLogin();
+		ALP.AdminLogin(fUtil.propertyFileDataFetch("adminun"), fUtil.propertyFileDataFetch("adminpsd"));
+		ADP.clickOnDoctors();
+
 		ADP.getDoctorsLink().click();
 		ADP.getDoctorSpecializationLink().click();
-		ADS.getdoctorspecilizationEdt().sendKeys(value);
+
+		ADS.getdoctorspecilizationEdt().sendKeys(value + new Java_Utils().randomIntegerNumber(10000));
 		ADS.getSubmitBtn().click();
 
 		// Validation
@@ -76,7 +46,6 @@ public class AddDoctorSpecialinzation_AdminModuleTest {
 		Thread.sleep(2000);
 		driver.quit();
 	}
-	
 
 	@DataProvider
 	public Object[][] dp() throws Throwable {

@@ -10,7 +10,7 @@ public class ManageDoctorPage {
 	@FindBy(xpath="//td[text()='Dermatologist']/following-sibling::td/descendant::a[@tooltip='Edit']")
 	private WebElement EditIcon;
 	
-	@FindBy(xpath="//td[text()='Dermatologist']/following-sibling::td/descendant::a[@tooltip='Remove']")
+	@FindBy(xpath="(//a[@tooltip='Remove'])[1]")
 	private WebElement RemoveIcon;
 	
 	public ManageDoctorPage(WebDriver driver) {
@@ -23,6 +23,11 @@ public class ManageDoctorPage {
 
 	public WebElement getRemoveIcon() {
 		return RemoveIcon;
+	}
+	//Business Libraries
+	public void deleteDoctor() {
+		getRemoveIcon().click();
+		
 	}
 
 }

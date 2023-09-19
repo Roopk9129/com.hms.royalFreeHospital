@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AddPatientPage {
 	@FindBy(xpath = "//input[@placeholder='Enter Patient Name']")
-	private WebElement AddPatientEdt;
+	private WebElement AddPatientNameEdt;
 
 	@FindBy(xpath = "//input[@placeholder='Enter Patient Contact no']")
 	private WebElement AddPatientContactNoEdt;
@@ -38,8 +38,8 @@ public class AddPatientPage {
 
 	}
 
-	public WebElement getAddPatientEdt() {
-		return AddPatientEdt;
+	public WebElement getAddPatientNameEdt() {
+		return AddPatientNameEdt;
 	}
 
 	public WebElement getAddPatientContactNoEdt() {
@@ -77,9 +77,10 @@ public class AddPatientPage {
 	public void addPatient(String PatientName, String PatientPhoneNo, String Email, String address, String age,
 			String MedicalHis) {
 		
-		getAddPatientEdt().sendKeys(PatientName);
+		getAddPatientNameEdt().sendKeys(PatientName);
 		getAddPatientContactNoEdt().sendKeys(PatientPhoneNo);
 		getAddPatientEmailIDEdt().sendKeys(Email);
+		
 		getAddPatientAddressEdt().sendKeys(address);
 		getAddPatientAgeEdt().sendKeys(age);
 		getAddPatientMediacalhisEdt().sendKeys(MedicalHis);

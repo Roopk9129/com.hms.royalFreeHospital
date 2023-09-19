@@ -3,11 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.HMS.admin.dummy">
+      <class name="com.HMS.admin.DeleteDoctor_AdminModuleTest">
         <methods>
-          <include name="main"/>
+          <include name="AT"/>
+          <include name="AC"/>
+          <include name="BT"/>
+          <include name="AS"/>
+          <include name="deleteDoctor_AdminModuleTest"/>
+          <include name="BC"/>
+          <include name="BS"/>
         </methods>
-      </class> <!-- com.HMS.admin.dummy -->
+      </class> <!-- com.HMS.admin.DeleteDoctor_AdminModuleTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

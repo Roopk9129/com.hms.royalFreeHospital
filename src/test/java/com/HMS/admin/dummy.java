@@ -1,38 +1,36 @@
 package com.HMS.admin;
 
-import java.time.Duration;
 
-import org.apache.commons.collections4.map.HashedMap;
-import org.openqa.selenium.Keys;
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
-import com.hms.ObjectRepo.AddDoctorPage;
-import com.hms.genericUtils.ExcelFileUtility;
+import com.hms.genericUtils.BaseClass;
 
-public class dummy {
-@Test
-	public void main() throws Throwable {
-//		ExcelFileUtility EUtil = new ExcelFileUtility();
-//		WebDriver driver=new ChromeDriver();
-//				HashedMap<String, String> stri = EUtil.getMultipleDataFromExcel(driver, "Doctor_Details__AdminModule", 1, 0, "getDoctorNameEdt()");
-//		System.out.println(stri);
-		
-		WebDriver driver=new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+public class dummy  {
+	@Test
+	public void dum() {
+		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("H:\\14-09\\Admin _ Add Doctor.html");
-		AddDoctorPage ADPE = new AddDoctorPage(driver);
-		ExcelFileUtility eut = new ExcelFileUtility();
-//		ADPE.getDoctorSpecializationDD().click();
-		String data = eut.pullMultipleDataFromSheet("Doctor_Details__AdminModule");
-		ADPE.getDoctorNameEdt().sendKeys(data);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.get("H:\\14-09\\User _ Book Appointment.html");
 		
-		
-		
-		
-
+	
+		WebElement spec = driver.findElement(By.xpath("//select[@name='Doctorspecialization']"));
+		Select sel = new Select(spec);
+		sel.selectByVisibleText("Urology_6694");
+//		List<WebElement> allop = sel.getOptions();
+//		for(WebElement al:allop) {
+//			System.out.println(al.getText());
+//			
+//		}
 	}
+	
 
 }

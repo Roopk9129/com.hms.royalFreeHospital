@@ -9,7 +9,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AddDoctorPage {
+import com.hms.genericUtils.WebDriver_Utils;
+
+public class AddDoctorPage extends WebDriver_Utils {
 	@FindBy(xpath = "//select[@name='Doctorspecialization']")
 	private WebElement DoctorSpecializationDD;
 
@@ -78,17 +80,13 @@ public class AddDoctorPage {
 	}
 
 	public void createDoctor(WebDriver driver, HashedMap<String, String> map) {
-		
-		for(Entry<String, String> ss:map.entrySet()) {
+
+		for (Entry<String, String> ss : map.entrySet()) {
 			driver.findElement(By.xpath(ss.getKey())).sendKeys(ss.getValue());
-			
+
 		}
 		getSubmitBtn().click();
-		
-		
-		
-		
-		
+
 //		getDoctorSpecializationDD().sendKeys(Spec);
 //		getDoctorNameEdt().sendKeys(Name);
 //		getClinicAddress().sendKeys(address);
@@ -97,7 +95,20 @@ public class AddDoctorPage {
 //		getDoctorEmailEdt().sendKeys(email);
 //		getDoctorPsdEdt().sendKeys(psd);
 //		getDoctorCfPsdEdt().sendKeys(cnfpsd);
-		
+
+	}
+
+	public void addDoctor(String spec, String Name, String address, String fee, String contact, String email,
+			String psd, String cnfpsd) {
+		dropdownHandle(getDoctorSpecializationDD(), spec);
+		getDoctorNameEdt().sendKeys(Name);
+		getClinicAddress().sendKeys(address);
+		getDoctorConsultancyFeesEdt().sendKeys(fee);
+		getDoctorContactNoEdt().sendKeys(contact);
+		getDoctorEmailEdt().sendKeys(email);
+		getDoctorPsdEdt().sendKeys(psd);
+		getDoctorCfPsdEdt().sendKeys(cnfpsd);
+		getSubmitBtn().click();
 	}
 
 }
