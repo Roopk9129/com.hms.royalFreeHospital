@@ -3,9 +3,9 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.HMS.admin.EditDoctorDetails_AdminModuleTest">
+      <class name="com.HMS.Doctor.AddPatient_DoctorModuleTest">
         <methods>
-          <include name="editDoctorDetails_AdminModuleTest"/>
+          <include name="addPatientDoctorModuleTest"/>
           <include name="AT"/>
           <include name="AC"/>
           <include name="BT"/>
@@ -13,7 +13,7 @@
           <include name="BC"/>
           <include name="BS"/>
         </methods>
-      </class> <!-- com.HMS.admin.EditDoctorDetails_AdminModuleTest -->
+      </class> <!-- com.HMS.Doctor.AddPatient_DoctorModuleTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

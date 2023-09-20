@@ -115,7 +115,7 @@ public class BaseClass {
 
 	@AfterClass(alwaysRun = true)
 	public void AC() {
-		driver.quit();
+//		driver.quit();
 		System.out.println("AC Executed");
 
 	}

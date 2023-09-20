@@ -1,15 +1,10 @@
 package com.HMS.admin;
 
-import java.time.Duration;
-import java.util.Random;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 import org.testng.annotations.Test;
 
 import com.hms.ObjectRepo.AdminDashboardPage;
@@ -17,10 +12,6 @@ import com.hms.ObjectRepo.AdminLoginPage;
 import com.hms.ObjectRepo.HomePage;
 import com.hms.ObjectRepo.ManageDoctorPage;
 import com.hms.genericUtils.BaseClass;
-import com.hms.genericUtils.ExcelFileUtility;
-import com.hms.genericUtils.FileUtility;
-import com.hms.genericUtils.Java_Utils;
-import com.hms.genericUtils.WebDriver_Utils;
 
 public class DeleteDoctor_AdminModuleTest extends BaseClass {
 	/*
@@ -41,7 +32,6 @@ public class DeleteDoctor_AdminModuleTest extends BaseClass {
 		ALP.AdminLogin(fUtil.propertyFileDataFetch("adminun"), fUtil.propertyFileDataFetch("adminpsd"));
 		ADP.clickOnDoctors();
 		ADP.clickOnManageDoctor();
-
 		MDP.deleteDoctor();
 
 		Alert cofir = driver.switchTo().alert();
@@ -56,7 +46,6 @@ public class DeleteDoctor_AdminModuleTest extends BaseClass {
 			} else {
 				System.out.println("Confirmation Message has not been displayed");
 			}
-
 		} else {
 			System.out.println("Alert popup is failed to display");
 		}

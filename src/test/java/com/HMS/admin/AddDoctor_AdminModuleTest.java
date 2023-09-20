@@ -12,7 +12,6 @@ import com.hms.genericUtils.ExcelFileUtility;
 public class AddDoctor_AdminModuleTest extends BaseClass {
 	/*
 	 * Admin should be able to Add Doctor
-	 * 
 	 * @Author: S Roop Kumar
 	 */
 	@Test(dataProvider = "dpp", groups = "SmokeTesting")

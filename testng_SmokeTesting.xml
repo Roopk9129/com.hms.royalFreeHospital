@@ -4,18 +4,16 @@
 	<groups>
 		<run>
 			<include name="SmokeTesting"></include>
-
 		</run>
 	</groups>
 	<test thread-count="5" name="Test">
 		<classes>
-			<class
-				name="com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest" />
+			<class name="com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest" />
 			<class name="com.HMS.admin.AddDoctor_AdminModuleTest" />
 			<class name="com.HMS.admin.ManageDoctor_AdminModuleTest" />
 			<class name="com.HMS.admin.EditDoctorDetails_AdminModuleTest" />
 			<class name="com.HMS.admin.DeleteDoctor_AdminModuleTest" />
-
+			<class name="com.HMS.admin.CancelTheAppointment_UserModuleTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
