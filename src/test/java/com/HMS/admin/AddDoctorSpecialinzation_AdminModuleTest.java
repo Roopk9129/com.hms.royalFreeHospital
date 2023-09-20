@@ -18,7 +18,7 @@ public class AddDoctorSpecialinzation_AdminModuleTest extends BaseClass {
 	 * 
 	 * @Author: S Roop Kumar
 	 */
-	@Test(dataProvider = "dp")
+	@Test(dataProvider = "dp",groups = "SmokeTesting")
 	public void addDoctorSpecialinzation_AdminModuleTest(String value) throws Throwable {
 
 		HomePage HP = new HomePage(driver);
@@ -43,8 +43,9 @@ public class AddDoctorSpecialinzation_AdminModuleTest extends BaseClass {
 			System.out.println(driver.findElement(By.xpath("//div[@class='panel panel-white']/descendant::p")).getText()
 					+ " --> Message is displayed successfully");
 		}
+		ADP.getProfileIcon().click();
 		Thread.sleep(2000);
-		driver.quit();
+		ADP.getLogOut().click();
 	}
 
 	@DataProvider

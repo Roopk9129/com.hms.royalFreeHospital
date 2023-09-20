@@ -1,70 +1,63 @@
 package com.HMS.admin;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
 
+import com.hms.ObjectRepo.AddDoctorPage;
+import com.hms.ObjectRepo.AdminDashboardPage;
+import com.hms.ObjectRepo.AdminLoginPage;
+import com.hms.ObjectRepo.HomePage;
+import com.hms.ObjectRepo.ManageDoctorPage;
+import com.hms.genericUtils.BaseClass;
 import com.hms.genericUtils.ExcelFileUtility;
 import com.hms.genericUtils.FileUtility;
 import com.hms.genericUtils.Java_Utils;
 import com.hms.genericUtils.WebDriver_Utils;
 
-public class ManageDoctor_AdminModuleTest {
+public class ManageDoctor_AdminModuleTest extends BaseClass{
 	/*
 	 * Admin should able to Manage Doctors
 	 * 
 	 * @author Roop kumar
 	 * 
 	 */
+	@Test(groups = "SmokeTesting")
+	public void manageDoctor_AdminModuleTest() throws Throwable {
+		// object creation for repo
+				HomePage HP = new HomePage(driver);
+				AdminLoginPage ALP = new AdminLoginPage(driver);
+				AdminDashboardPage ADP = new AdminDashboardPage(driver);
+				ManageDoctorPage MDP = new ManageDoctorPage(driver);
 
-	public static void main(String[] args) throws Throwable {
-		WebDriver driver = null;
-		// Object Creation for Utility Files
-		FileUtility fUtil = new FileUtility();
-		WebDriver_Utils wUtil = new WebDriver_Utils();
-		ExcelFileUtility EUtil = new ExcelFileUtility();
-		Java_Utils jUtil = new Java_Utils();
+				HP.clickOnAdminLogin();
+				ALP.AdminLogin(fUtil.propertyFileDataFetch("adminun"), fUtil.propertyFileDataFetch("adminpsd"));
+				ADP.clickOnDoctors();
+				ADP.clickOnManageDoctor();
 
-		String brow = fUtil.propertyFileDataFetch("browsername");
-		String Url = fUtil.propertyFileDataFetch("url");
-		String un = fUtil.propertyFileDataFetch("adminun");
-		String psd = fUtil.propertyFileDataFetch("adminpsd");
+				MDP.deleteDoctor();
 
-		// Browser Control
-		if (brow.equalsIgnoreCase("chrome")) {
-			driver = new ChromeDriver();
-			System.out.println("Chrome has launched");
+				Alert cofir = driver.switchTo().alert();
+				String Message = cofir.getText();
+				if (Message.equalsIgnoreCase("Are you sure you want to delete?")) {
+					System.out.println(Message + " --->Alert Popup is dispalyed ");
+					cofir.accept();
+					WebElement DataDeletedMessage = driver.findElement(By.xpath("//p[contains(text(),'data deleted !!')]"));
+					if (DataDeletedMessage.isDisplayed()) {
+						System.out.println(DataDeletedMessage.getText() + " ---> Confirmation Message has been displayed");
 
-		} else if (brow.equalsIgnoreCase("firefox")) {
-			driver = new FirefoxDriver();
-			System.out.println("Firefox has launched");
+					} else {
+						System.out.println("Confirmation Message has not been displayed");
+					}
 
-		} else {
-			System.out.println("Invalid Browser name");
-		}
-		wUtil.maximizeBrowser(driver);
-		driver.get(Url);
-		wUtil.implicitWait(driver, 20);
-		// Key Values
-		String ModuleName = "Admin Login";
-
-		// Test Script to create ADD DOCTOR SPECIALIZATION
-		driver.findElement(By.xpath("//h3[text()='" + ModuleName
-				+ "']/ancestor::div[@class='listview_1_of_3 images_1_of_3']/descendant::a")).click();
-		driver.findElement(By.xpath("//input[@name='username']")).sendKeys(un);
-		driver.findElement(By.xpath("//input[@name='password']")).sendKeys(psd, Keys.ENTER);
-		driver.findElement(By.xpath("//ul[@class='main-navigation-menu']/descendant::span[text()=' Doctors ']"))
-				.click();
-		driver.findElement(By.xpath(
-				"//ul[@class='main-navigation-menu']/descendant::span[text()=' Doctors ']/following::span[text()=' Manage Doctors ']"))
-				.click();
-		driver.findElement(By.xpath("(//a[@class='btn btn-transparent btn-xs tooltips'])[1]")).click();
-
-		wUtil.acceptAlert(driver, "Are you sure you want to delete?", "Confirmation Message has been displayed",
-				"Confirmation Message has not been displayed");
-
+				} else {
+					System.out.println("Alert popup is failed to display");
+				}
 //		Alert cofir = driver.switchTo().alert();
 //		String Message = cofir.getText();
 //		if (Message.equalsIgnoreCase("Are you sure you want to delete?")) {

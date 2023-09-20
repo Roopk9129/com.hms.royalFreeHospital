@@ -26,14 +26,32 @@ public class BaseClass {
 	public boolean UnPatientFlag = false;
 	HomePage HP = new HomePage(driver);
 
-	@BeforeSuite
+	@BeforeSuite(alwaysRun = true)
 	public void BS() {
 		System.out.println("Database connected");
 
 	}
 
-	@BeforeTest
+	@BeforeTest(alwaysRun = true)
 	public void BT() throws Throwable {
+//		String brow = fUtil.propertyFileDataFetch("browsername");
+//		if (brow.equalsIgnoreCase("chrome")) {
+//			driver = new ChromeDriver();
+//			System.out.println("Chrome has launched");
+//
+//		} else if (brow.equalsIgnoreCase("firefox")) {
+//			driver = new FirefoxDriver();
+//			System.out.println("Firefox has launched");
+//
+//		} else {
+//			System.out.println("Invalid Browser name");
+//		}
+//		wUtil.maximizeBrowser(driver);
+
+	}
+
+	@BeforeClass(alwaysRun = true)
+	public void BC() throws Throwable {
 		String brow = fUtil.propertyFileDataFetch("browsername");
 		if (brow.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
@@ -47,11 +65,6 @@ public class BaseClass {
 			System.out.println("Invalid Browser name");
 		}
 		wUtil.maximizeBrowser(driver);
-
-	}
-
-	@BeforeClass
-	public void BC() throws Throwable {
 		String Url = fUtil.propertyFileDataFetch("url");
 		driver.get(Url);
 		wUtil.implicitWait(driver, 20);
@@ -88,19 +101,21 @@ public class BaseClass {
 //
 //	}
 
-	@AfterSuite
+	@AfterSuite(alwaysRun = true)
 	public void AS() {
 		System.out.println("AS Executed");
 	}
 
-	@AfterTest
+	@AfterTest(alwaysRun = true)
 	public void AT() {
 		System.out.println("AT Executed");
 
+
 	}
 
-	@AfterClass
+	@AfterClass(alwaysRun = true)
 	public void AC() {
+		driver.quit();
 		System.out.println("AC Executed");
 
 	}

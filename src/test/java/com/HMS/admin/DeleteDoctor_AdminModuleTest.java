@@ -29,7 +29,7 @@ public class DeleteDoctor_AdminModuleTest extends BaseClass {
 	 * @author
 	 * 
 	 */
-	@Test
+	@Test(groups = "SmokeTesting")
 	public void deleteDoctor_AdminModuleTest() throws Throwable {
 		// object creation for repo
 		HomePage HP = new HomePage(driver);

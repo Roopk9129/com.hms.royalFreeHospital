@@ -15,7 +15,7 @@ public class AddDoctor_AdminModuleTest extends BaseClass {
 	 * 
 	 * @Author: S Roop Kumar
 	 */
-	@Test(dataProvider = "dpp")
+	@Test(dataProvider = "dpp", groups = "SmokeTesting")
 	public void addDoctor_AdminModuleTest(String Dspec, String Dname, String address, String fee, String phno,
 			String Email, String psd, String cnfpsd) throws Throwable {
 		// Object repo
@@ -41,6 +41,9 @@ public class AddDoctor_AdminModuleTest extends BaseClass {
 			System.out.println(alerttext + " --> Message Displayed Successfully");
 			wUtil.acceptAlert(driver);
 		}
+		ADP.getProfileIcon().click();
+		Thread.sleep(2000);
+		ADP.getLogOut().click();
 
 	}
 

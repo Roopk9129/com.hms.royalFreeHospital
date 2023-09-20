@@ -1,41 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-09-19T16:57:04 IST" name="Default suite" finished-at="2023-09-19T16:57:29 IST" duration-ms="25207">
+  <suite started-at="2023-09-20T10:51:47 IST" name="Suite" finished-at="2023-09-20T10:52:36 IST" duration-ms="48433">
     <groups>
+      <group name="SmokeTesting">
+        <method signature="AddDoctorSpecialinzation_AdminModuleTest.addDoctorSpecialinzation_AdminModuleTest(java.lang.String)[pri:0, instance:com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest@700fb871]" name="addDoctorSpecialinzation_AdminModuleTest" class="com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest"/>
+        <method signature="AddDoctor_AdminModuleTest.addDoctor_AdminModuleTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.HMS.admin.AddDoctor_AdminModuleTest@2fb0623e]" name="addDoctor_AdminModuleTest" class="com.HMS.admin.AddDoctor_AdminModuleTest"/>
+        <method signature="DeleteDoctor_AdminModuleTest.deleteDoctor_AdminModuleTest()[pri:0, instance:com.HMS.admin.DeleteDoctor_AdminModuleTest@415b0b49]" name="deleteDoctor_AdminModuleTest" class="com.HMS.admin.DeleteDoctor_AdminModuleTest"/>
+        <method signature="EditDoctorDetails_AdminModuleTest.editDoctorDetails_AdminModuleTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.HMS.admin.EditDoctorDetails_AdminModuleTest@5be1d0a4]" name="editDoctorDetails_AdminModuleTest" class="com.HMS.admin.EditDoctorDetails_AdminModuleTest"/>
+        <method signature="ManageDoctor_AdminModuleTest.manageDoctor_AdminModuleTest()[pri:0, instance:com.HMS.admin.ManageDoctor_AdminModuleTest@49b2a47d]" name="manageDoctor_AdminModuleTest" class="com.HMS.admin.ManageDoctor_AdminModuleTest"/>
+      </group> <!-- SmokeTesting -->
     </groups>
-    <test started-at="2023-09-19T16:57:04 IST" name="Default test" finished-at="2023-09-19T16:57:29 IST" duration-ms="25207">
+    <test started-at="2023-09-20T10:51:47 IST" name="Test" finished-at="2023-09-20T10:52:36 IST" duration-ms="48433">
       <class name="com.HMS.admin.DeleteDoctor_AdminModuleTest">
-        <test-method is-config="true" signature="BS()[pri:0, instance:com.HMS.admin.DeleteDoctor_AdminModuleTest@5dafbe45]" started-at="2023-09-19T16:57:04 IST" name="BS" finished-at="2023-09-19T16:57:04 IST" duration-ms="12" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BS -->
-        <test-method is-config="true" signature="BT()[pri:0, instance:com.HMS.admin.DeleteDoctor_AdminModuleTest@5dafbe45]" started-at="2023-09-19T16:57:04 IST" name="BT" finished-at="2023-09-19T16:57:26 IST" duration-ms="22873" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BT -->
-        <test-method is-config="true" signature="BC()[pri:0, instance:com.HMS.admin.DeleteDoctor_AdminModuleTest@5dafbe45]" started-at="2023-09-19T16:57:27 IST" name="BC" finished-at="2023-09-19T16:57:27 IST" duration-ms="260" status="PASS">
+        <test-method is-config="true" signature="BC()[pri:0, instance:com.HMS.admin.DeleteDoctor_AdminModuleTest@415b0b49]" started-at="2023-09-20T10:52:32 IST" name="BC" finished-at="2023-09-20T10:52:34 IST" duration-ms="1823" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BC -->
-        <test-method signature="deleteDoctor_AdminModuleTest()[pri:0, instance:com.HMS.admin.DeleteDoctor_AdminModuleTest@5dafbe45]" started-at="2023-09-19T16:57:27 IST" name="deleteDoctor_AdminModuleTest" finished-at="2023-09-19T16:57:29 IST" duration-ms="2032" status="PASS">
+        <test-method signature="deleteDoctor_AdminModuleTest()[pri:0, instance:com.HMS.admin.DeleteDoctor_AdminModuleTest@415b0b49]" started-at="2023-09-20T10:52:34 IST" name="deleteDoctor_AdminModuleTest" finished-at="2023-09-20T10:52:36 IST" duration-ms="1852" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteDoctor_AdminModuleTest -->
-        <test-method is-config="true" signature="AC()[pri:0, instance:com.HMS.admin.DeleteDoctor_AdminModuleTest@5dafbe45]" started-at="2023-09-19T16:57:29 IST" name="AC" finished-at="2023-09-19T16:57:29 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="AC()[pri:0, instance:com.HMS.admin.DeleteDoctor_AdminModuleTest@415b0b49]" started-at="2023-09-20T10:52:36 IST" name="AC" finished-at="2023-09-20T10:52:36 IST" duration-ms="116" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AC -->
-        <test-method is-config="true" signature="AT()[pri:0, instance:com.HMS.admin.DeleteDoctor_AdminModuleTest@5dafbe45]" started-at="2023-09-19T16:57:29 IST" name="AT" finished-at="2023-09-19T16:57:29 IST" duration-ms="1" status="PASS">
+      </class> <!-- com.HMS.admin.DeleteDoctor_AdminModuleTest -->
+      <class name="com.HMS.admin.ManageDoctor_AdminModuleTest">
+        <test-method is-config="true" signature="BC()[pri:0, instance:com.HMS.admin.ManageDoctor_AdminModuleTest@49b2a47d]" started-at="2023-09-20T10:52:24 IST" name="BC" finished-at="2023-09-20T10:52:26 IST" duration-ms="1855" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BC -->
+        <test-method signature="manageDoctor_AdminModuleTest()[pri:0, instance:com.HMS.admin.ManageDoctor_AdminModuleTest@49b2a47d]" started-at="2023-09-20T10:52:26 IST" name="manageDoctor_AdminModuleTest" finished-at="2023-09-20T10:52:27 IST" duration-ms="1803" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- manageDoctor_AdminModuleTest -->
+        <test-method is-config="true" signature="AC()[pri:0, instance:com.HMS.admin.ManageDoctor_AdminModuleTest@49b2a47d]" started-at="2023-09-20T10:52:27 IST" name="AC" finished-at="2023-09-20T10:52:27 IST" duration-ms="132" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AC -->
+      </class> <!-- com.HMS.admin.ManageDoctor_AdminModuleTest -->
+      <class name="com.HMS.admin.AddDoctor_AdminModuleTest">
+        <test-method is-config="true" signature="BC()[pri:0, instance:com.HMS.admin.AddDoctor_AdminModuleTest@2fb0623e]" started-at="2023-09-20T10:52:16 IST" name="BC" finished-at="2023-09-20T10:52:18 IST" duration-ms="2026" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BC -->
+        <test-method signature="addDoctor_AdminModuleTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.HMS.admin.AddDoctor_AdminModuleTest@2fb0623e]" started-at="2023-09-20T10:52:18 IST" name="addDoctor_AdminModuleTest" data-provider="dpp" finished-at="2023-09-20T10:52:24 IST" duration-ms="5300" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Urology_1892]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Karthi]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[1/115 venkatampatti,Dharmapuri]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[500]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[6382121323]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[chc.harikarthi@gmail.com]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[Santha@2475]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[Santha@2475]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addDoctor_AdminModuleTest -->
+        <test-method is-config="true" signature="AC()[pri:0, instance:com.HMS.admin.AddDoctor_AdminModuleTest@2fb0623e]" started-at="2023-09-20T10:52:24 IST" name="AC" finished-at="2023-09-20T10:52:24 IST" duration-ms="123" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AC -->
+      </class> <!-- com.HMS.admin.AddDoctor_AdminModuleTest -->
+      <class name="com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest">
+        <test-method is-config="true" signature="BS()[pri:0, instance:com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest@700fb871]" started-at="2023-09-20T10:51:47 IST" name="BS" finished-at="2023-09-20T10:51:47 IST" duration-ms="19" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BS -->
+        <test-method is-config="true" signature="BT()[pri:0, instance:com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest@700fb871]" started-at="2023-09-20T10:51:47 IST" name="BT" finished-at="2023-09-20T10:51:47 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BT -->
+        <test-method is-config="true" signature="BC()[pri:0, instance:com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest@700fb871]" started-at="2023-09-20T10:51:47 IST" name="BC" finished-at="2023-09-20T10:52:10 IST" duration-ms="22706" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BC -->
+        <test-method signature="addDoctorSpecialinzation_AdminModuleTest(java.lang.String)[pri:0, instance:com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest@700fb871]" started-at="2023-09-20T10:52:11 IST" name="addDoctorSpecialinzation_AdminModuleTest" data-provider="dp" finished-at="2023-09-20T10:52:16 IST" duration-ms="5267" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Urology_]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addDoctorSpecialinzation_AdminModuleTest -->
+        <test-method is-config="true" signature="AC()[pri:0, instance:com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest@700fb871]" started-at="2023-09-20T10:52:16 IST" name="AC" finished-at="2023-09-20T10:52:16 IST" duration-ms="136" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AC -->
+        <test-method is-config="true" signature="AT()[pri:0, instance:com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest@700fb871]" started-at="2023-09-20T10:52:36 IST" name="AT" finished-at="2023-09-20T10:52:36 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AT -->
-        <test-method is-config="true" signature="AS()[pri:0, instance:com.HMS.admin.DeleteDoctor_AdminModuleTest@5dafbe45]" started-at="2023-09-19T16:57:29 IST" name="AS" finished-at="2023-09-19T16:57:29 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="AS()[pri:0, instance:com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest@700fb871]" started-at="2023-09-20T10:52:36 IST" name="AS" finished-at="2023-09-20T10:52:36 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AS -->
-      </class> <!-- com.HMS.admin.DeleteDoctor_AdminModuleTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      </class> <!-- com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest -->
+      <class name="com.HMS.admin.EditDoctorDetails_AdminModuleTest">
+        <test-method is-config="true" signature="BC()[pri:0, instance:com.HMS.admin.EditDoctorDetails_AdminModuleTest@5be1d0a4]" started-at="2023-09-20T10:52:27 IST" name="BC" finished-at="2023-09-20T10:52:29 IST" duration-ms="1853" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BC -->
+        <test-method signature="editDoctorDetails_AdminModuleTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.HMS.admin.EditDoctorDetails_AdminModuleTest@5be1d0a4]" started-at="2023-09-20T10:52:29 IST" name="editDoctorDetails_AdminModuleTest" data-provider="dp" finished-at="2023-09-20T10:52:32 IST" duration-ms="2556" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Mohan]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Delhi]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[600]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[9999999999]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- editDoctorDetails_AdminModuleTest -->
+        <test-method is-config="true" signature="AC()[pri:0, instance:com.HMS.admin.EditDoctorDetails_AdminModuleTest@5be1d0a4]" started-at="2023-09-20T10:52:32 IST" name="AC" finished-at="2023-09-20T10:52:32 IST" duration-ms="133" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AC -->
+      </class> <!-- com.HMS.admin.EditDoctorDetails_AdminModuleTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>
