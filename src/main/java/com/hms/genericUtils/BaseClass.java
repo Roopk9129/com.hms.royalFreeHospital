@@ -1,29 +1,27 @@
 package com.hms.genericUtils;
 
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
-
-import com.hms.ObjectRepo.AdminLoginPage;
 import com.hms.ObjectRepo.HomePage;
 
 public class BaseClass {
 	public WebDriver driver;
+	public static WebDriver IDriver;
+	public static String bName;
 	public FileUtility fUtil = new FileUtility();
 	public WebDriver_Utils wUtil = new WebDriver_Utils();
 	public ExcelFileUtility EUtil = new ExcelFileUtility();
 	public Java_Utils jUtil = new Java_Utils();
 
-	public boolean Adminflag = false;
-	public boolean DoctorFlag = false;
-	public boolean PatientFlag = false;
-
-	public boolean UnAdminFlag = false;
-	public boolean UnDoctorFlag = false;
-	public boolean UnPatientFlag = false;
+//	public boolean Adminflag = false;
+//	public boolean DoctorFlag = false;
+//	public boolean PatientFlag = false;
+//
+//	public boolean UnAdminFlag = false;
+//	public boolean UnDoctorFlag = false;
+//	public boolean UnPatientFlag = false;
 	HomePage HP = new HomePage(driver);
 
 	@BeforeSuite(alwaysRun = true)
@@ -34,19 +32,7 @@ public class BaseClass {
 
 	@BeforeTest(alwaysRun = true)
 	public void BT() throws Throwable {
-//		String brow = fUtil.propertyFileDataFetch("browsername");
-//		if (brow.equalsIgnoreCase("chrome")) {
-//			driver = new ChromeDriver();
-//			System.out.println("Chrome has launched");
-//
-//		} else if (brow.equalsIgnoreCase("firefox")) {
-//			driver = new FirefoxDriver();
-//			System.out.println("Firefox has launched");
-//
-//		} else {
-//			System.out.println("Invalid Browser name");
-//		}
-//		wUtil.maximizeBrowser(driver);
+
 
 	}
 
@@ -55,19 +41,23 @@ public class BaseClass {
 		String brow = fUtil.propertyFileDataFetch("browsername");
 		if (brow.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
+			   bName="Chrome";
 			System.out.println("Chrome has launched");
 
 		} else if (brow.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
+			 bName="Firefox";
 			System.out.println("Firefox has launched");
 
 		} else {
 			System.out.println("Invalid Browser name");
 		}
+		IDriver = driver;
 		wUtil.maximizeBrowser(driver);
 		String Url = fUtil.propertyFileDataFetch("url");
 		driver.get(Url);
 		wUtil.implicitWait(driver, 20);
+		
 
 		System.out.println("BC Executed");
 
@@ -115,7 +105,7 @@ public class BaseClass {
 
 	@AfterClass(alwaysRun = true)
 	public void AC() {
-//		driver.quit();
+		driver.quit();
 		System.out.println("AC Executed");
 
 	}

@@ -1,5 +1,6 @@
 package com.HMS.admin;
 
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.hms.ObjectRepo.AddDoctorPage;
@@ -26,13 +27,14 @@ public class AddDoctor_AdminModuleTest extends BaseClass {
 		HP.clickOnAdminLogin();
 		ALP.AdminLogin(fUtil.propertyFileDataFetch("adminun"), fUtil.propertyFileDataFetch("adminpsd"));
 		ADP.clickOnDoctors();
+		
 		ADP.clickOnAddDoctor();
+		
 		// Append Random number to email
 		String[] afterSplit = Email.split("@");
 		String str = afterSplit[0] + jUtil.randomIntegerNumber(100000) + "@" + afterSplit[1];
-
 		ADPP.addDoctor(Dspec, Dname, address, fee, phno, str, psd, cnfpsd);
-
+		
 		String alerttext = wUtil.getAlertText(driver);
 		// validation
 		if (alerttext.equalsIgnoreCase("Doctor info added Successfully")) {
@@ -49,7 +51,7 @@ public class AddDoctor_AdminModuleTest extends BaseClass {
 	@DataProvider(name = "dpp")
 	public Object[][] dp() throws Throwable {
 		ExcelFileUtility EFU = new ExcelFileUtility();
-		return EFU.dataProviderr("Doctor_Details_AdminModule");
+		return EFU.dataProvider("Doctor_Details_AdminModule");
 
 	}
 

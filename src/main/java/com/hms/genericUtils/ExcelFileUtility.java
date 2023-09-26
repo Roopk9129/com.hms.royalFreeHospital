@@ -95,21 +95,21 @@ public class ExcelFileUtility {
 		return result.toString();
 	}
 
-	public Object[][] dataProviderr(String SheetName) throws Throwable {
+	public Object[][] dataProvider(String SheetName) throws Throwable {
 		FileInputStream fis = new FileInputStream(IPathConstants.excelFilePath);
 		Workbook wb = WorkbookFactory.create(fis);
 		Sheet sheet = wb.getSheet(SheetName);
-		int lr = sheet.getLastRowNum() +1;
+		int lr = sheet.getLastRowNum() + 1;
 		int lc = sheet.getRow(0).getLastCellNum();
-		Object[][] obj = new Object[lr][lc];
-		for (int i = 0; i <lr; i++) {
-			for (int j = 0; j < lc; j++) {
-				obj[i][j] = sheet.getRow(i).getCell(j).getStringCellValue();
+		Object[][] obj = new Object[lr - 1][lc];
 
+		for (int i = 1; i < lr; i++) {
+			for (int j = 0; j < lc; j++) {
+				obj[i - 1][j] = sheet.getRow(i).getCell(j).getStringCellValue();
 			}
 		}
-		return obj;
 
+		return obj;
 	}
 
 }

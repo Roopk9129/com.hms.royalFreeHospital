@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="tests" name="Test2(failed)">
+    <classes>
+      <class name="com.HMS.admin.AddDoctor_AdminModuleTest">
+        <methods>
+          <include name="AT"/>
+          <include name="AC"/>
+          <include name="BT"/>
+          <include name="AS"/>
+          <include name="BC"/>
+          <include name="BS"/>
+          <include name="addDoctor_AdminModuleTest"/>
+        </methods>
+      </class> <!-- com.HMS.admin.AddDoctor_AdminModuleTest -->
+    </classes>
+  </test> <!-- Test2(failed) -->
   <test thread-count="5" parallel="tests" name="Test1(failed)">
     <classes>
       <class name="com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest">
@@ -16,19 +31,4 @@
       </class> <!-- com.HMS.admin.AddDoctorSpecialinzation_AdminModuleTest -->
     </classes>
   </test> <!-- Test1(failed) -->
-  <test thread-count="5" parallel="tests" name="Test2(failed)">
-    <classes>
-      <class name="com.HMS.admin.AddDoctor_AdminModuleTest">
-        <methods>
-          <include name="AT"/>
-          <include name="AC"/>
-          <include name="BT"/>
-          <include name="AS"/>
-          <include name="addDoctor_AdminModuleTest"/>
-          <include name="BC"/>
-          <include name="BS"/>
-        </methods>
-      </class> <!-- com.HMS.admin.AddDoctor_AdminModuleTest -->
-    </classes>
-  </test> <!-- Test2(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -43,7 +43,7 @@ public class AddPatient_DoctorModuleTest extends BaseClass {
 	@DataProvider
 	public Object[][] dpdata() throws Throwable {
 		ExcelFileUtility EFU = new ExcelFileUtility();
-		Object[][] value = EFU.dataProviderr("AddPatientWithMedicalHistory_Do");
+		Object[][] value = EFU.dataProvider("AddPatientWithMedicalHistory_Do");
 		return value;
 	}
 

@@ -17,11 +17,11 @@ public class CancelTheAppointment_UserModuleTest extends BaseClass {
 	 * alert Message
 	 * 
 	 */
+	
 	@Test(groups = "SmokeTesting")
 	public void cancelTheAppointment_UserModuleTest(String specnamee, String docName, String date, String time)
 			throws Throwable {
-		
-		
+
 		// Object repo object creation
 		HomePage HP = new HomePage(driver);
 		PatientLoginPage PLP = new PatientLoginPage(driver);
@@ -39,7 +39,7 @@ public class CancelTheAppointment_UserModuleTest extends BaseClass {
 	@DataProvider
 	public Object[][] dp() throws Throwable {
 		ExcelFileUtility eutil = new ExcelFileUtility();
-		return eutil.dataProviderr("BookAppointment_PatientModule");
+		return eutil.dataProvider("BookAppointment_PatientModule");
 
 	}
 

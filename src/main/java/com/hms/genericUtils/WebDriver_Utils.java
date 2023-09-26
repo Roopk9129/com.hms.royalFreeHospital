@@ -344,7 +344,7 @@ public class WebDriver_Utils {
 	 * @throws Throwable
 	 */
 
-	public String takeScreenShot(WebDriver driver, String FileName) throws Throwable {
+	public static String takeScreenShot(WebDriver driver, String FileName) throws Throwable {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
 		File dst = new File(".//screenshots//" + FileName + ".png");

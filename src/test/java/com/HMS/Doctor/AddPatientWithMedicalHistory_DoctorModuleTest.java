@@ -1,17 +1,12 @@
 package com.HMS.Doctor;
 
-import java.io.FileInputStream;
-import java.time.Duration;
 import java.util.List;
-import java.util.Properties;
-import java.util.Random;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import com.hms.genericUtils.ExcelFileUtility;
 import com.hms.genericUtils.FileUtility;
 import com.hms.genericUtils.Java_Utils;

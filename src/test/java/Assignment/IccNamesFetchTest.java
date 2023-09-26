@@ -15,7 +15,6 @@ public class IccNamesFetchTest {
 		String UrlName = "https://www.icc-cricket.com/rankings/womens/team-rankings/odi";
 
 		// xpaths
-//		String MatchesCount = "//table/tbody/tr[*]/td[3][@class='table-body__cell u-center-text' and text()<40]";
 		String CountryNames = "//table/tbody/tr[*]/td[3][@class='table-body__cell u-center-text' and text()<40]/preceding-sibling::td/following-sibling::td/descendant::span[@class='u-hide-phablet']";
 
 		// Browser config

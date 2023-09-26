@@ -1,15 +1,9 @@
 package com.HMS.admin;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import com.hms.ObjectRepo.AddDoctorPage;
 import com.hms.ObjectRepo.AdminDashboardPage;
 import com.hms.ObjectRepo.AdminLoginPage;
 import com.hms.ObjectRepo.EditDoctorDetailsPage;
@@ -17,9 +11,7 @@ import com.hms.ObjectRepo.HomePage;
 import com.hms.ObjectRepo.ManageDoctorPage;
 import com.hms.genericUtils.BaseClass;
 import com.hms.genericUtils.ExcelFileUtility;
-import com.hms.genericUtils.FileUtility;
-import com.hms.genericUtils.Java_Utils;
-import com.hms.genericUtils.WebDriver_Utils;
+
 
 public class EditDoctorDetails_AdminModuleTest extends BaseClass {
 	/*
@@ -57,6 +49,9 @@ public class EditDoctorDetails_AdminModuleTest extends BaseClass {
 
 			}
 		}
+		ADP.getProfileIcon().click();
+		Thread.sleep(1000);
+		ADP.getLogOut().click();
 
 	}
 
@@ -64,7 +59,7 @@ public class EditDoctorDetails_AdminModuleTest extends BaseClass {
 
 	@DataProvider
 	public Object[][] dp() throws Throwable {
-		return eutil.dataProviderr("editDoctorDetails_AdminModuleTe");
+		return eutil.dataProvider("editDoctorDetails_AdminModuleTe");
 
 	}
 

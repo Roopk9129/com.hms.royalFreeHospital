@@ -1,5 +1,7 @@
 package com.hms.ObjectRepo;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +17,12 @@ public class AddDoctorSpecializationPage extends WebDriver_Utils {
 
 	@FindBy(xpath = "//button[@name='submit']")
 	private WebElement SubmitBtn;
+	
+	@FindBy(xpath = "//div[@class='panel panel-white']/descendant::p")
+	private WebElement ConfirmationMessage;
+	
+	@FindBy(xpath="//tbody/tr/td[2]")
+	private List<WebElement> ListofDocSpec;
 
 	public AddDoctorSpecializationPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -28,8 +36,25 @@ public class AddDoctorSpecializationPage extends WebDriver_Utils {
 		return SubmitBtn;
 	}
 
+	public WebElement getDoctorspecilizationEdt() {
+		return doctorspecilizationEdt;
+	}
+
+	public WebElement getConfirmationMessage() {
+		return ConfirmationMessage;
+	}
+	
+
+	public List<WebElement> getListofDocSpec() {
+		return ListofDocSpec;
+	}
+
 	public void addSpecilization(String SpecName) {
 		getdoctorspecilizationEdt().sendKeys(SpecName);
 		getSubmitBtn().click();
+	}
+	
+	public String getConfirmationTxt() {
+		return getConfirmationMessage().getText();
 	}
 }
