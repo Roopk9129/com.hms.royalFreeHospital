@@ -3,17 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.HMS.User.CancelTheAppointment_UserModuleTest">
+      <class name="mock.EmiCaluculater">
         <methods>
-          <include name="cancelTheAppointment_UserModuleTest"/>
-          <include name="AT"/>
-          <include name="AC"/>
-          <include name="BT"/>
-          <include name="AS"/>
-          <include name="BC"/>
-          <include name="BS"/>
+          <include name="emiCaluculater"/>
         </methods>
-      </class> <!-- com.HMS.User.CancelTheAppointment_UserModuleTest -->
+      </class> <!-- mock.EmiCaluculater -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
