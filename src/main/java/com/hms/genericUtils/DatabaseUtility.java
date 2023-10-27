@@ -20,6 +20,7 @@ public class DatabaseUtility {
 		Driver driver = new Driver();
 		DriverManager.registerDriver(driver);
 		con = DriverManager.getConnection(IPathConstants.dbURL, IPathConstants.dbUsername, IPathConstants.dbPassword);
+		
 
 	}
 

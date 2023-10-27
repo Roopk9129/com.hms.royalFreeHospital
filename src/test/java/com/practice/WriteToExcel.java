@@ -20,7 +20,7 @@ public class WriteToExcel {
 		String url = "jdbc:mysql://rmgtestingserver:3333/projects";
 		String un = "root@%";
 		String psd = "root";
-		String query = "SELECT PROJECT_ID FROM PROJECT;";
+		String query = "SELECT * FROM PROJECT;";
 		Connection con = null;
 
 		// BackEnd Validation
@@ -35,7 +35,7 @@ public class WriteToExcel {
 		Sheet sh = wb.getSheet("Sheet1");
 
 		for (int i = 0; res.next(); i++) {
-			System.out.println(res.getString(1));
+			System.out.println(res.getString(1)+" "+res.getString(2)+" "+res.getString(3)+" "+res.getString(4)+" "+res.getString(5));
 			String DV = res.getString(1);
 			sh.createRow(i).createCell(0).setCellValue(DV);
 			FileOutputStream FOS = new FileOutputStream(".\\src\\test\\resources\\WriteData.xlsx");
